@@ -1,6 +1,31 @@
 ---
 import '@fontsource-variable/noto-sans-tc'
 import '@fontsource-variable/noto-serif-tc'
+
+interface Props {
+  title?: string
+  description?: string
+}
+
+const DEFAULTS = {
+  title: '黃靖緯 Ethan Huang',
+  description: 'Learning everything!',
+}
+
+const TEMPLATE = {
+  title: '｜Ethan Huang',
+}
+
+const { title: titleProps, description: descriptionProps } = Astro.props
+
+const props = {
+  title: titleProps ? `${titleProps}${TEMPLATE.title}` : DEFAULTS.title,
+  description: descriptionProps ?? DEFAULTS.description,
+}
+
+const metadata = {
+  twitterHandle: '@chingweih',
+}
 ---
 
 <!doctype html>
@@ -10,8 +35,13 @@ import '@fontsource-variable/noto-serif-tc'
     <meta name='viewport' content='width=device-width' />
     <link rel='icon' href='/favicon.ico' />
     <meta name='generator' content={Astro.generator} />
-    <meta name='description' content='Learning everything!' />
-    <title>黃靖緯 Ethan Huang</title>
+    <meta name='description' content={props.description} />
+    <meta name='og:title' content={props.title} />
+    <meta name='og:description' content={props.description} />
+    <meta name='twitter:title' content={props.title} />
+    <meta name='twitter:description' content={props.description} />
+    <meta name='twitter:site' content={metadata.twitterHandle} />
+    <title>{props.title}</title>
   </head>
   <body
     class='bg-bg bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:12px_12px] text-slate-800 font-sans'
