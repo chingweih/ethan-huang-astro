@@ -6,7 +6,11 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Noto Sans TC Variable', ...defaultTheme.fontFamily.sans],
+        sans: [
+          'Rubik Variable',
+          'Noto Sans TC Variable',
+          ...defaultTheme.fontFamily.sans,
+        ],
         serif: ['Noto Serif TC Variable', ...defaultTheme.fontFamily.serif],
       },
       colors: {
