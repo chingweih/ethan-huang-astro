@@ -16,10 +16,16 @@ const encodedText = btoa(text)
 >
 
 <script>
-  document.querySelectorAll('[data-email]').forEach((element) => {
-    const email = atob(element.getAttribute('data-email') ?? '')
-    const text = atob(element.getAttribute('data-text') ?? '')
-    element.setAttribute('href', `mailto:${email}`)
-    element.textContent = text
+  function decodeEmails() {
+    document.querySelectorAll('[data-email]').forEach((element) => {
+      const email = atob(element.getAttribute('data-email') ?? '')
+      const text = atob(element.getAttribute('data-text') ?? '')
+      element.setAttribute('href', `mailto:${email}`)
+      element.textContent = text
+    })
+  }
+
+  document.addEventListener('astro:page-load', () => {
+    decodeEmails()
   })
 </script>
