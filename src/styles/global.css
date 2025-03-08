@@ -1,1 +1,13 @@
-@import "tailwindcss";
+@import 'tailwindcss';
+
+.bordered-table {
+  @apply border border-white;
+}
+
+.bordered-table th {
+  @apply border border-white px-1 py-2;
+}
+
+.bordered-table td {
+  @apply border border-white px-1 py-2;
+}
