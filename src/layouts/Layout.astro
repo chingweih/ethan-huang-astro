@@ -54,7 +54,7 @@ const metadata = {
     <meta name='twitter:description' content={props.description} />
     <meta name='twitter:site' content={metadata.twitterHandle} />
     <title>{props.title}</title>
-    <ClientRouter fallback='none' />
+    <ClientRouter fallback='swap' />
   </head>
   <body
     class='bg-bg bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:12px_12px] text-slate-800 font-sans'
