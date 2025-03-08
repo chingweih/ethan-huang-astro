@@ -3,6 +3,7 @@ import { Image } from 'astro:assets'
 import { Github } from 'simple-icons-astro'
 import profileImage from '../assets/ethan-huang.jpg'
 import Layout from '../layouts/Layout.astro'
+import Email from '../components/obfuscate/Email.astro'
 ---
 
 <Layout
@@ -25,7 +26,11 @@ import Layout from '../layouts/Layout.astro'
       </h1>
       <div class='flex items-center justify-start gap-2' transition:name='sub'>
         <a href='https://github.com/chingweih'><Github size={18} /></a>
-        <a href='mailto:e@ethanhuang.me' class='underline'>e@ethanhuang.me</a>
+        <Email
+          email='e@ethanhuang.me'
+          text='e@ethanhuang.me'
+          class='underline'
+        />
       </div>
     </div>
   </div>

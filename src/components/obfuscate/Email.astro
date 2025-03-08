@@ -1,0 +1,25 @@
+---
+interface Props {
+  email: string
+  text: string
+  class: string
+}
+
+const { email, text, class: className } = Astro.props
+
+const encodedEmail = btoa(email)
+const encodedText = btoa(text)
+---
+
+<a href='#' data-email={encodedEmail} data-text={encodedText} class={className}
+  >[email protected]</a
+>
+
+<script>
+  document.querySelectorAll('[data-email]').forEach((element) => {
+    const email = atob(element.getAttribute('data-email') ?? '')
+    const text = atob(element.getAttribute('data-text') ?? '')
+    element.setAttribute('href', `mailto:${email}`)
+    element.textContent = text
+  })
+</script>
