@@ -1,0 +1,144 @@
+---
+import { Image } from 'astro:assets'
+import profileImage from '../assets/ethan-huang.jpg'
+
+import Layout from '../layouts/Layout.astro'
+import { Github } from 'simple-icons-astro'
+
+type TitleBlock = {
+  title: string
+  subtitle?: string
+}
+
+type Item = TitleBlock & {
+  descriptions?: (string | TitleBlock)[]
+}
+
+type Group = TitleBlock & {
+  children: Item[]
+}
+
+const contents: Group[] = [
+  {
+    title: '工作經驗',
+    subtitle: 'Past Experiences',
+    children: [
+      {
+        title: '壯闊台灣聯盟',
+        subtitle: 'Forward Alliance',
+        descriptions: [
+          {
+            title: '實習 / 技術工程 / 數據分析',
+            subtitle: 'Intern / IT / Data Analysis',
+          },
+          'July, 2022 - Present',
+        ],
+      },
+      {
+        title: '美國之音中文網',
+        subtitle: 'VOA Chinese',
+        descriptions: [
+          { title: '特約剪輯', subtitle: 'Freelance Video Editor' },
+          'Feb, 2024 - Present',
+        ],
+      },
+      {
+        title: '中央廣播電台',
+        subtitle: 'Radio Taiwan International',
+        descriptions: [
+          '英語節目組 / 網路媒體組',
+          { title: '實習', subtitle: 'Intern' },
+          'July, 2022 - Aug, 2022',
+        ],
+      },
+    ],
+  },
+  {
+    title: '學生活動經驗',
+    subtitle: 'Student Activities',
+    children: [
+      {
+        title: '臺大政治營 文宣長',
+        subtitle: '2024 NTUPS Camp',
+        descriptions: ['全端營隊系統製作、宣傳片統籌拍攝與剪輯'],
+      },
+      {
+        title: '建國中學人社班',
+        descriptions: ['成發網頁製作、招生影片企劃拍攝與剪輯'],
+      },
+    ],
+  },
+  {
+    title: '學經歷',
+    subtitle: 'Education',
+    children: [
+      {
+        title: '國立臺灣大學',
+        subtitle: 'National Taiwan University',
+        descriptions: [
+          {
+            title: '政治學系國際關係組',
+            subtitle: 'Political Science, IR Division',
+          },
+          '2022 - 2026',
+        ],
+      },
+      {
+        title: '語言能力',
+        subtitle: 'Language Proficiency',
+        descriptions: [
+          '多益 TOEIC LR 990',
+          { title: '全民英檢中高級', subtitle: 'GEPT High-Intermediate' },
+        ],
+      },
+    ],
+  },
+]
+---
+
+<Layout title='About' class='space-y-8 mt-2 mb-10'>
+  <div
+    class='flex items-center justify-start gap-2 border-l-2 border-slate-700 rounder-md px-2'
+    slot='after-header'
+  >
+    <p>
+      I make stuff and learn things. (<a href='/cv.pdf' class='underline'>CV</a
+      >)
+    </p>
+  </div>
+
+  {
+    contents.map((group) => (
+      <div class='space-y-5'>
+        <h2 class='text-2xl font-medium pt-2 pb-1'>
+          {group.title}{' '}
+          <span class='text-lg whitespace-nowrap'>{group.subtitle}</span>
+        </h2>
+        <div class='space-y-4'>
+          {group.children.map((item) => (
+            <div class='space-y-1'>
+              <h3 class='text-xl'>
+                {item.title}{' '}
+                <span class='text-base whitespace-nowrap'>{item.subtitle}</span>
+              </h3>
+              {item.descriptions?.map((description) => {
+                if (typeof description === 'string') {
+                  return <p class='font-light text-slate-500'>{description}</p>
+                } else {
+                  return (
+                    <p class='font-light text-slate-500'>
+                      {description.title}{' '}
+                      <span class='text-sm whitespace-nowrap'>
+                        {description.subtitle}
+                      </span>
+                    </p>
+                  )
+                }
+              })}
+            </div>
+          ))}
+        </div>
+      </div>
+    ))
+  }
+</Layout>
