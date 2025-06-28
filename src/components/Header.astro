@@ -3,13 +3,13 @@ import { Image } from 'astro:assets'
 import profileImage from '../assets/ethan-huang.jpg'
 ---
 
-<div class='flex flex-col mt-2 gap-3 w-full justify-center items-start'>
+<div class='flex flex-col my-2 gap-3 w-full justify-center items-start'>
   <a href='/'>
     <div class='flex flex-row items-center justify-center gap-2'>
       <Image
         src={profileImage}
         alt='黃靖緯 Ethan Huang'
-        class='rounded-md w-[30px]'
+        class='rounded-full w-[30px]'
         transition:name='logo'
       />
       <h1 class='text-3xl font-semibold' transition:name='name'>

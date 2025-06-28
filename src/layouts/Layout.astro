@@ -15,12 +15,12 @@ interface Props {
 }
 
 const DEFAULTS = {
-  title: '黃靖緯 Ethan Huang',
-  description: 'Learning everything!',
+  title: 'Ethan Huang 黃靖緯',
+  description: 'Poli-Sci student by day, developer by curiosity.',
 }
 
 const TEMPLATE = {
-  title: '｜Ethan Huang',
+  title: '｜EH',
 }
 
 const {
@@ -59,15 +59,23 @@ const metadata = {
   <body
     class='bg-bg bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:12px_12px] text-slate-800 font-sans'
   >
-    <div class={cn('mx-auto w-full max-w-lg px-5 py-8', className)}>
-      {
-        includeHeader && (
-          <Header>
-            <slot name='after-header' />
-          </Header>
-        )
-      }
-      <slot />
+    <div class='absolute inset-0'>
+      <div
+        class='absolute inset-0 -z-10 h-full w-full bg-white bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px] [&>div]:absolute [&>div]:left-0 [&>div]:right-0 [&>div]:top-0 [&>div]:-z-10 [&>div]:m-auto [&>div]:h-[310px] [&>div]:w-[310px] [&>div]:rounded-full [&>div]:bg-fuchsia-400 [&>div]:opacity-20 [&>div]:blur-[100px]'
+      >
+        <div></div>
+      </div>
+
+      <div class={cn('mx-auto w-full max-w-lg px-5 py-8', className)}>
+        {
+          includeHeader && (
+            <Header>
+              <slot name='after-header' />
+            </Header>
+          )
+        }
+        <slot />
+      </div>
     </div>
   </body>
 </html>

@@ -10,33 +10,30 @@ import Email from '../components/obfuscate/Email.astro'
   class='h-svh flex flex-col items-start justify-center gap-5'
   header={false}
 >
-  <div class='flex mt-2 gap-5 justify-between items-center'>
+  <div class='flex flex-col mt-2 gap-5 justify-start items-start'>
     <Image
       src={profileImage}
       alt='黃靖緯 Ethan Huang'
-      class='rounded-md w-[60px]'
+      class='rounded-full w-[60px]'
       transition:name='logo'
+      loading='eager'
     />
-    <div class='flex flex-col items-start justify-center w-full gap-2'>
+    <div class='flex flex-col items-start justify-start w-full gap-2'>
       <h1 class='text-3xl font-semibold' transition:name='name'>
-        黃靖緯 <span
+        Ethan Huang <span
           class='font-normal text-lg text-slate-400 whitespace-nowrap'
-          >Ethan Huang</span
+          >黃靖緯</span
         >
       </h1>
-      <div class='flex items-center justify-start gap-2' transition:name='sub'>
-        <a href='https://github.com/chingweih'><Github size={18} /></a>
-        <Email
-          email='e@ethanhuang.me'
-          text='e@ethanhuang.me'
-          class='underline'
-        />
-      </div>
     </div>
   </div>
-  <div class='px-2 py-1 border-l-2 border-slate-700 rounder-md'>
-    <p>Learning everything!</p>
-    <p>📍新北市・台灣</p>
+  <div class='py-1 space-y-2'>
+    <p>Poli-Sci student by day, developer by curiosity.</p>
+    <p>Creating insightful data analysis and bringing stories to life.</p>
+  </div>
+  <div class='flex items-center justify-start gap-2' transition:name='sub'>
+    <a href='https://github.com/chingweih'><Github size={18} /></a>
+    <Email email='e@ethanhuang.me' text='e@ethanhuang.me' class='underline' />
   </div>
   <div>
     <a href='/about' class='underline'>About</a>{' ・ '}
