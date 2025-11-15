@@ -7,14 +7,20 @@ export default {
     extend: {
       fontFamily: {
         sans: [
-          'Rubik Variable',
+          'Inter Tight Variable',
           'Noto Sans TC Variable',
           ...defaultTheme.fontFamily.sans,
         ],
-        serif: ['Noto Serif TC Variable', ...defaultTheme.fontFamily.serif],
+        serif: [
+          'PT Serif',
+          'Noto Serif TC Variable',
+          ...defaultTheme.fontFamily.serif,
+        ],
+        mono: ['JetBrains Mono Variable', ...defaultTheme.fontFamily.mono],
       },
       colors: {
-        bg: '#fafafa',
+        bg: '#101010',
+        primary: '#FFC799',
       },
     },
   },
