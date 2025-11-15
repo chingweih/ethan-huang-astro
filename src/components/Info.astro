@@ -1,0 +1,24 @@
+---
+interface Props {
+  title: string
+  descriptions: string[]
+  href?: string
+}
+
+const { props } = Astro
+---
+
+<div class='space-y-1'>
+  <h3>
+    <a href={props.href} class='border-b border-b-primary-muted'
+      >{props.title}</a
+    >
+  </h3>
+  <div class='space-y-0.5'>
+    {
+      props.descriptions.map((description) => {
+        return <p class='text-primary-muted text-sm'>{description}</p>
+      })
+    }
+  </div>
+</div>

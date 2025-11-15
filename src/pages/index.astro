@@ -1,38 +1,135 @@
 ---
-import { Image } from 'astro:assets'
 import { Github } from 'simple-icons-astro'
-import profileImage from '../assets/ethan-huang.jpg'
-import Layout from '../layouts/Layout.astro'
 import Email from '../components/obfuscate/Email.astro'
+import Layout from '../layouts/Layout.astro'
+import Info from '../components/Info.astro'
 ---
 
 <Layout
-  class='h-svh flex flex-col items-start justify-center gap-5'
+  class='min-h-svh flex flex-col items-start justify-center gap-5 pb-[150px]'
   header={false}
 >
-  <div class='flex flex-col mt-2 gap-5 justify-start items-start'>
-    <Image
-      src={profileImage}
-      alt='黃靖緯 Ethan Huang'
-      class='rounded-full w-[60px]'
-      transition:name='logo'
-      loading='eager'
-    />
-    <div class='flex flex-col items-start justify-start w-full gap-2'>
-      <h1 class='text-3xl font-semibold' transition:name='name'>
-        Ethan Huang <span
-          class='font-normal text-lg text-slate-400 whitespace-nowrap'
-          >黃靖緯</span
-        >
-      </h1>
+  <div><h1 class='text-xs font-mono text-primary-muted'>ethanhuang.me</h1></div>
+  <div class='space-y-3'>
+    <p>
+      Hi, I'm <span class='text-primary font-bold'>Ethan Huang</span>, a
+      full-stack product developer and data journalist who also happen to
+      studied political science.
+    </p>
+    <p>
+      I specialize in building impactful software tools and products from the
+      ground up, complemented by insightful data analysis. My unique blend of
+      engineering skills and social science perspective allows me to approach
+      product development and data interpretation with a deep understanding of
+      real-world context and user needs.
+    </p>
+  </div>
+  <div class='space-y-5'>
+    <div class='space-y-2'>
+      <h2 class='font-bold'>Projects</h2>
+      <ul class='space-y-3'>
+        <li>
+          <Info
+            title='iCanHelp App'
+            descriptions={[
+              'A set of tools and guides packed in an all-in-one app for Taiwanese society to be prepared for the disasters.',
+              'Next.js, React, Typescript',
+            ]}
+            href='https://app.icanhelp.tw'
+          />
+        </li>
+        <li>
+          <Info
+            title='Realtime Election Infographics'
+            descriptions={[
+              'An interactive map visualizing election results and their distribution across multiple regions.',
+              'Svelte, Web Component, Vite, Typescript',
+            ]}
+            href='https://www.twreporter.org/a/data-reporter-2025-726-recall-results'
+          />
+        </li>
+        <li>
+          <Info
+            title='Data Journalism'
+            descriptions={[
+              'Analyzing critical social and political issues through data from diverse sources, including AIS, government fiscal documents, and military activities, to provide actionable insights.',
+              'Python, QGIS',
+            ]}
+            href='https://www.twreporter.org/a/data-reporter-impacts-on-allocation-amendents'
+          />
+        </li>
+        <li>
+          <Info
+            title='codefest.taipei Hackathon Project'
+            descriptions={[
+              'We built a microservice, embeddable within Taipei\'s citizen app "Town Pass," in just 24 hours.',
+              'Next.js, Flutter',
+            ]}
+            href='https://github.com/face-on-keyboard/web'
+          />
+          <li>
+            <Info
+              title='NTU PS Camp Companion App'
+              descriptions={[
+                'A centralized platform that streamlined communication and enhanced the overall gaming experience for camp participants.',
+                'Next.js, Supabase',
+              ]}
+              href='https://ntupscamp.vercel.app'
+            />
+          </li>
+          <li>
+            <Info
+              title='Highschool Student Project Showcase Website'
+              descriptions={[
+                'My pandemic project that got me into building websites.',
+              ]}
+              href='https://ckhsc16.github.io'
+            />
+          </li>
+        </li>
+      </ul>
+    </div>
+    <div class='space-y-2'>
+      <h2 class='font-bold'>Experience</h2>
+      <ul class='space-y-3'>
+        <Info
+          title='Forward Alliance'
+          descriptions={[
+            'A NGO dedicated to build community and resiliency. Empowering citizens with digital tools and emergency response trainings.',
+            'Head of Research & Development',
+          ]}
+          href='https://www.forward.org.tw'
+        />
+        <Info
+          title='The Reporter'
+          descriptions={[
+            'Non-profit media organization focused on investigative journalism.',
+            'Data Journalist',
+          ]}
+          href='https://www.twreporter.org/'
+        />
+      </ul>
+    </div>
+    <div>
+      <ul class='text-primary-muted text-sm'>
+        <li>
+          <h2 class='font-bold'>Education</h2>
+          <p>
+            Bachelor, Department of Political Science, National Taiwan
+            University.
+          </p>
+        </li>
+      </ul>
     </div>
   </div>
-  <div class='py-1 space-y-2'>
-    <p>Poli-Sci student by day, developer by curiosity.</p>
-    <p>Creating insightful data analysis and bringing stories to life.</p>
-  </div>
-  <div class='flex items-center justify-start gap-2' transition:name='sub'>
-    <a href='https://github.com/chingweih'><Github size={18} /></a>
-    <Email email='e@ethanhuang.me' text='e@ethanhuang.me' class='underline' />
+  <div class='flex flex-col mt-2 gap-5 justify-start items-start'>
+    <div class='flex items-center justify-start gap-2'>
+      <a href='https://github.com/chingweih'><Github size={16} /></a>
+      <Email
+        email='e@ethanhuang.me'
+        text='e@ethanhuang.me'
+        class='underline text-sm'
+      />
+    </div>
   </div>
 </Layout>

@@ -7,6 +7,7 @@
 
   --color-bg: #101010;
   --color-primary: #ffc799;
+  --color-primary-muted: #787878;
 }
 
 .bordered-table {
@@ -19,4 +20,14 @@
 
 .bordered-table td {
   @apply border border-white px-1 py-2;
+}
+
+.blueprint-grid {
+  background-image: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0.01) 1px,
+      transparent 1px
+    ),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.01) 1px, transparent 1px);
+  background-size: 25px 25px;
 }

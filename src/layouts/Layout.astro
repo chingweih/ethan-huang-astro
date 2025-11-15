@@ -1,13 +1,12 @@
 ---
-import '../styles/global.css'
-import '@fontsource-variable/noto-sans-tc'
-import '@fontsource-variable/noto-serif-tc'
 import '@fontsource-variable/inter-tight'
 import '@fontsource-variable/jetbrains-mono'
+import '@fontsource-variable/noto-sans-tc'
+import '@fontsource-variable/noto-serif-tc'
 import '@fontsource/pt-serif'
 import { ClientRouter } from 'astro:transitions'
 import { cn } from '../lib/cn'
-import Header from '../components/Header.astro'
+import '../styles/global.css'
 
 interface Props {
   title?: string
@@ -17,8 +16,9 @@ interface Props {
 }
 
 const DEFAULTS = {
-  title: 'Ethan Huang 黃靖緯',
-  description: 'Poli-Sci student by day, developer by curiosity.',
+  title: 'ethanhuang.me',
+  description:
+    'Poli-Sci student by day, developer by curiosity. Creating insightful data analysis and bringing stories to life.',
 }
 
 const TEMPLATE = {
@@ -58,11 +58,9 @@ const metadata = {
     <title>{props.title}</title>
     <ClientRouter fallback='swap' />
   </head>
-  <body class='bg-bg text-white font-serif'>
-    <div class='absolute inset-0'>
-      <div class={cn('mx-auto w-full max-w-lg px-5 py-8', className)}>
-        <slot />
-      </div>
+  <body class='bg-bg text-white font-serif blueprint-grid'>
+    <div class={cn('mx-auto w-full max-w-[50ch] px-5 py-8', className)}>
+      <slot />
     </div>
   </body>
 </html>
