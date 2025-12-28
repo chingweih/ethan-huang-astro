@@ -15,7 +15,7 @@ const { post } = Astro.props
 const { Content } = await render(post)
 ---
 
-<Layout>
+<Layout title={post.data.title}>
   <div class='pb-2 space-y-3'>
     <h1 class='font-bold text-xl'>{post.data.title}</h1>
     <p class='text-primary'>{post.data.date.toDateString()}</p>
