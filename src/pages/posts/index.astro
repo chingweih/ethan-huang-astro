@@ -1,0 +1,23 @@
+---
+import { getCollection } from 'astro:content'
+import Layout from '../../layouts/Layout.astro'
+
+const posts = await getCollection('posts')
+---
+
+<Layout>
+  <div class='mb-8'>
+    {
+      posts.map((post) => (
+        <div class='py-2 space-y-2'>
+          <h2 class='hover:underline text-lg font-bold'>
+            <a href={`/posts/${post.id}`}>{post.data.title}</a>
+          </h2>
+          <p class='text-primary-muted text-sm'>
+            {post.data.date.toDateString()}
+          </p>
+        </div>
+      ))
+    }
+  </div>
+</Layout>
