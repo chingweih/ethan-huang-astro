@@ -1,0 +1,22 @@
+---
+title: Connecting to Gnome's built-in RDP server on Fedora from macOS Windows App
+date: 2025-12-28
+---
+
+## Issue
+
+Windows App (previously Microsoft Remote Desktop) has some bugs that make it incompatible with Fedora Gnome built-in RDP server.
+
+## Fix
+
+Export the RDP configuration file from Windows App, open it with a text editor, add this line to the bottom
+
+```text
+use redirection server name:i:1
+```
+
+Then re-import the file, this should do the trick.
+
+## Source
+
+Reddit user *atsutsa* on this [reddit post](https://www.reddit.com/r/Fedora/comments/1lxaju4/connecting_from_macos_to_fedora_42_via_rdp/)
