@@ -1,65 +1,66 @@
 ---
-import "@fontsource-variable/inter-tight";
-import "@fontsource-variable/jetbrains-mono";
-import "@fontsource-variable/noto-sans-tc";
-import "@fontsource-variable/noto-serif-tc";
-import "@fontsource/pt-serif";
-import { ClientRouter } from "astro:transitions";
-import { cn } from "../lib/cn";
-import "../styles/global.css";
+import '@fontsource-variable/inter-tight'
+import '@fontsource-variable/jetbrains-mono'
+import '@fontsource-variable/noto-sans-tc'
+import '@fontsource-variable/noto-serif-tc'
+import '@fontsource/pt-serif/400.css'
+import '@fontsource/pt-serif/700.css'
+import { ClientRouter } from 'astro:transitions'
+import { cn } from '../lib/cn'
+import '../styles/global.css'
 
 interface Props {
-  title?: string;
-  description?: string;
-  class?: string;
-  header?: boolean;
+  title?: string
+  description?: string
+  class?: string
+  header?: boolean
 }
 
 const DEFAULTS = {
-  title: "Ethan Huang 黃靖緯",
+  title: 'Ethan Huang 黃靖緯',
   description:
-    "Poli-Sci student by day, developer by curiosity. Creating insightful data analysis and bringing stories to life.",
-};
+    'Poli-Sci student by day, developer by curiosity. Creating insightful data analysis and bringing stories to life.',
+}
 
 const TEMPLATE = {
-  title: "｜EH",
-};
+  title: '｜EH',
+}
 
 const {
   title: titleProps,
   description: descriptionProps,
   class: className,
   header: includeHeader = true,
-} = Astro.props;
+} = Astro.props
 
 const props = {
   title: titleProps ? `${titleProps}${TEMPLATE.title}` : DEFAULTS.title,
   description: descriptionProps ?? DEFAULTS.description,
-};
+}
 
 const metadata = {
-  twitterHandle: "@chingweih",
-};
+  twitterHandle: '@chingweih',
+}
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang='en'>
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" href="/favicon.png" />
-    <meta name="generator" content={Astro.generator} />
-    <meta name="description" content={props.description} />
-    <meta name="og:title" content={props.title} />
-    <meta name="og:description" content={props.description} />
-    <meta name="twitter:title" content={props.title} />
-    <meta name="twitter:description" content={props.description} />
-    <meta name="twitter:site" content={metadata.twitterHandle} />
+    <meta charset='UTF-8' />
+    <meta name='viewport' content='width=device-width' />
+    <link rel='icon' href='/favicon.png' />
+    <meta name='generator' content={Astro.generator} />
+    <meta name='description' content={props.description} />
+    <meta name='og:title' content={props.title} />
+    <meta name='og:description' content={props.description} />
+    <meta name='twitter:title' content={props.title} />
+    <meta name='twitter:description' content={props.description} />
+    <meta name='twitter:site' content={metadata.twitterHandle} />
     <title>{props.title}</title>
-    <ClientRouter fallback="swap" />
+    <ClientRouter fallback='swap' />
   </head>
-  <body class="bg-bg text-white font-serif blueprint-grid">
-    <div class={cn("mx-auto w-full max-w-[50ch] px-5 py-8", className)}>
+  <body class='bg-bg text-white font-serif blueprint-grid'>
+    <div class={cn('mx-auto w-full max-w-[50ch] px-5 py-8', className)}>
       <slot />
     </div>
   </body>
