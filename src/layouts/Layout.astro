@@ -5,9 +5,9 @@ import '@fontsource-variable/noto-sans-tc'
 import '@fontsource-variable/noto-serif-tc'
 import '@fontsource/pt-serif/400.css'
 import '@fontsource/pt-serif/700.css'
-import { ClientRouter } from 'astro:transitions'
 import { cn } from '../lib/cn'
 import '../styles/global.css'
+import Navigation from '../components/Navigation.astro'
 
 interface Props {
   title?: string
@@ -57,10 +57,10 @@ const metadata = {
     <meta name='twitter:description' content={props.description} />
     <meta name='twitter:site' content={metadata.twitterHandle} />
     <title>{props.title}</title>
-    <ClientRouter fallback='swap' />
   </head>
   <body class='bg-bg text-white font-serif blueprint-grid'>
     <div class={cn('mx-auto w-full max-w-[50ch] px-5 py-8', className)}>
+      <Navigation />
       <slot />
     </div>
   </body>
