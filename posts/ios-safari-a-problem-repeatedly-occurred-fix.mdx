@@ -17,9 +17,13 @@ However, after diagnosing for issues such as "too many images", "images to big",
 
 I then connect my phone to my laptop and open up remote Safari inspect panel, in the "Layers" tab, I can see that the problematic page has way too many layers. This is due to my page has about 40 elements that has `display: sticky` CSS property set: Each sticky element's position has to be computed separately, thus the GPU usage spike letting Safari kill the page.
 
+![Root Cause](./images/ios-safari-a-problem-repeatedly-occurred-fix/before.jpg)
+
 ## Fix
 
 I end up implementing a conditional sticky in React to fix this problem: Use [Intersection Observer](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API) or [`useInView`](https://motion.dev/docs/react-use-in-view) to detect whether the parent element of the stick element is in view. Only apply `sticky` property when the element is in view, so Safari won't have to keep track of all sticky elements' position right after page loads.
+
+![After the fix](./images/ios-safari-a-problem-repeatedly-occurred-fix/after.jpg)
 
 ```tsx
 // Example
