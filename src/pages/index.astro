@@ -5,38 +5,24 @@ import Info from '../components/Info.astro'
 ---
 
 <Layout>
-  <div class='min-h-svh flex flex-col items-start justify-center gap-5'>
-    <div>
-      <h1 class='text-xs font-mono text-primary-muted'>ethanhuang.me</h1>
+  <div class='min-h-svh flex flex-col items-start justify-center gap-12'>
+    <div class='space-y-3 text-[clamp(1.25rem,1.1rem+0.7vw,1.5rem)]'>
+      Hi, I'm <div
+        class='text-primary font-bold inline-block relative hover:[&>p]:w-full pr-1'
+      >
+        Ethan Huang<p
+          class='absolute top-0 left-0 h-full bg-bg w-0 overflow-hidden text-nowrap transition-all ease-in-out'
+        >
+          黃靖緯
+        </p>
+      </div>. Data engineer, sometime journalist, and the one who makes the
+      charts move. Political science taught me that every dataset is somebody's
+      decision.
     </div>
-    <div class='space-y-3'>
-      <p>
-        Hi, I'm <span class='text-primary font-bold'>Ethan Huang（黃靖緯）</span
-        >, a full-stack product developer and data journalist who also happen to
-        studied political science.
-      </p>
-      <p>
-        I specialize in building impactful software tools and products from the
-        ground up, complemented by insightful data analysis. My unique blend of
-        engineering skills and social science perspective allows me to approach
-        product development and data interpretation with a deep understanding of
-        real-world context and user needs.
-      </p>
-    </div>
-    <div class='space-y-5'>
+    <div class='space-y-8'>
       <div class='space-y-2'>
-        <h2 class='font-bold'>Projects</h2>
-        <ul class='space-y-3'>
-          <li>
-            <Info
-              title='iCanHelp App'
-              descriptions={[
-                'A set of tools and guides packed in an all-in-one app for Taiwanese society to be prepared for the disasters.',
-                'Next.js, React, Typescript',
-              ]}
-              href='https://app.icanhelp.tw'
-            />
-          </li>
+        <h2 class='font-bold text-xl font-pixel'>Projects</h2>
+        <ul class='space-y-5'>
           <li>
             <Info
               title='Realtime Election Infographics'
@@ -49,12 +35,22 @@ import Info from '../components/Info.astro'
           </li>
           <li>
             <Info
-              title='Data Journalism'
+              title='Data-driven Journalism'
               descriptions={[
-                'Analyzing critical social and political issues through data from diverse sources, including AIS, government fiscal documents, and military activities, to provide actionable insights.',
+                'Analyzing critical social and political issues through numbers from government fiscal documents to provide actionable insights.',
                 'Python, QGIS',
               ]}
               href='https://www.twreporter.org/a/data-reporter-impacts-on-allocation-amendents'
+            />
+          </li>
+          <li>
+            <Info
+              title='iCanHelp App'
+              descriptions={[
+                'A set of tools and guides packed in an all-in-one app for Taiwanese society to be prepared for the disasters.',
+                'Next.js, React, Typescript',
+              ]}
+              href='https://app.icanhelp.tw'
             />
           </li>
           <li>
@@ -88,32 +84,35 @@ import Info from '../components/Info.astro'
           </li>
         </ul>
       </div>
+      <div class='w-full h-px bg-primary-muted'></div>
       <div class='space-y-2'>
-        <h2 class='font-bold'>Experience</h2>
-        <ul class='space-y-3'>
-          <Info
-            title='Forward Alliance'
-            descriptions={[
-              'A NGO dedicated to build community and resiliency. Empowering citizens with digital tools and emergency response trainings.',
-              'Head of Research & Development',
-            ]}
-            href='https://www.forward.org.tw'
-          />
+        <h2 class='font-bold text-xl font-pixel'>Experience</h2>
+        <ul class='space-y-5'>
           <Info
             title='The Reporter'
             descriptions={[
               'Non-profit media organization focused on investigative journalism.',
-              'Data Journalist',
+              'Data Engineer & Data Journalist',
             ]}
             href='https://www.twreporter.org/'
           />
+          <Info
+            title='Forward Alliance'
+            descriptions={[
+              'A NGO dedicated to build community and resiliency. Empowering citizens with digital tools and emergency response trainings.',
+              'Head of Research & Development (2022.06-2026.06)',
+            ]}
+            href='https://www.forward.org.tw'
+          />
         </ul>
       </div>
+      <div class='w-full h-px bg-primary-muted'></div>
+
       <div>
-        <ul class='text-primary-muted text-sm'>
+        <ul class='text-sm'>
           <li>
-            <h2 class='font-bold'>Education</h2>
-            <p>
+            <h2 class='font-bold text-xl font-pixel'>Education</h2>
+            <p class='italic'>
               Bachelor, Department of Political Science, National Taiwan
               University.
             </p>
@@ -121,7 +120,7 @@ import Info from '../components/Info.astro'
         </ul>
       </div>
     </div>
-    <div class='flex flex-col mt-2 gap-5 justify-start items-start'>
+    <div class='flex flex-col mt-2 gap-5 justify-start items-center w-full'>
       <div class='flex items-center justify-start gap-2'>
         <a href='https://github.com/chingweih' target='_blank'
           ><Github size={16} /></a

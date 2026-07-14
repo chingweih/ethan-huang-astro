@@ -5,10 +5,12 @@
   --font-sans: 'Inter Tight Variable', 'Noto Sans TC Variable', sans-serif;
   --font-serif: 'PT Serif', 'Noto Serif TC Variable', serif;
   --font-mono: 'JetBrains Mono Variable', monospace;
+  --font-pixel: 'Pixelify Sans Variable', monospace;
 
   --color-bg: #101010;
   --color-primary: #ffc799;
-  --color-primary-muted: #787878;
+  --color-primary-muted: #333;
+  --color-foreground: #f1f1f1;
 }
 
 .bordered-table {
@@ -31,4 +33,27 @@
     ),
     linear-gradient(to bottom, rgba(255, 255, 255, 0.01) 1px, transparent 1px);
   background-size: 25px 25px;
+}
+
+@utility tick-border {
+  border-bottom: 1px solid var(--color-primary-muted);
+  background-image: linear-gradient(
+      var(--color-primary-muted),
+      var(--color-primary-muted)
+    ),
+    linear-gradient(var(--color-primary-muted), var(--color-primary-muted)),
+    repeating-linear-gradient(
+      to right,
+      var(--color-primary-muted) 0 1px,
+      transparent 1px 22px
+    );
+  background-repeat: no-repeat;
+  background-size:
+    1px 7px,
+    1px 7px,
+    100% 4px;
+  background-position:
+    left bottom,
+    right bottom,
+    left bottom;
 }

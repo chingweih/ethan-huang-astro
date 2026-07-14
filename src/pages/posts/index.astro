@@ -10,7 +10,7 @@ const posts = await getCollection('posts')
     {
       posts.map((post) => (
         <div class='py-2 space-y-2'>
-          <h2 class='hover:underline text-lg font-bold'>
+          <h2 class='hover:text-primary transition-all ease-in-out text-lg font-bold'>
             <a href={`/posts/${post.id}`}>{post.data.title}</a>
           </h2>
           <p class='text-primary-muted text-sm'>

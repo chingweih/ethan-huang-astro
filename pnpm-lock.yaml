@@ -29,6 +29,9 @@ importers:
       '@fontsource-variable/noto-serif-tc':
         specifier: ^5.1.1
         version: 5.1.1
+      '@fontsource-variable/pixelify-sans':
+        specifier: ^5.2.7
+        version: 5.2.7
       '@fontsource/pt-serif':
         specifier: ^5.2.8
         version: 5.2.8
@@ -364,6 +367,9 @@ packages:
 
   '@fontsource-variable/noto-serif-tc@5.1.1':
     resolution: {integrity: sha512-Hk7zDA1Gqs+pRCOnVCERSaH2lE1JIkFjuP3caLtdjsEPpeCqAsOuJkzmuBDB23fnlsCH+2ZlOuQ6oTpmLXcdsA==}
+
+  '@fontsource-variable/pixelify-sans@5.2.7':
+    resolution: {integrity: sha512-IbQ7po3a7bQuguwyGQ7x7kMUCYvHjzxTdc7lYAcqzgR87MQb+vf8fuu4hjGyFLlWaDhS6QEe0jrS9dmCJ9ZlYw==}
 
   '@fontsource/pt-serif@5.2.8':
     resolution: {integrity: sha512-iqzFEfZOI1DOIhHEFAvU6vvbd6UGb3yVnGpZc63YIaa64/sRF8Fo0BHB6HB3/mJuVI/7Mq4AV+WQCBCY4c3d3w==}
@@ -2482,6 +2488,8 @@ snapshots:
   '@fontsource-variable/noto-sans-tc@5.1.0': {}
 
   '@fontsource-variable/noto-serif-tc@5.1.1': {}
+
+  '@fontsource-variable/pixelify-sans@5.2.7': {}
 
   '@fontsource/pt-serif@5.2.8': {}
 

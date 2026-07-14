@@ -8,16 +8,18 @@ interface Props {
 const { props } = Astro
 ---
 
-<div class='space-y-1'>
+<div class='space-y-2'>
   <h3>
-    <a href={props.href} class='border-b border-b-primary-muted' target='_blank'
-      >{props.title}</a
+    <a
+      href={props.href}
+      class='hover:text-primary transition-all ease-in-out'
+      target='_blank'>{props.title}</a
     >
   </h3>
   <div class='space-y-0.5'>
     {
       props.descriptions.map((description) => {
-        return <p class='text-primary-muted text-sm'>{description}</p>
+        return <p class='italic text-sm'>{description}</p>
       })
     }
   </div>
