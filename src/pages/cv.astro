@@ -26,18 +26,29 @@ import Layout from '../layouts/Layout.astro'
           </h2>
           <div class='flex flex-col gap-5 bg-beamer-card px-5 py-7'>
             {section.text && <p>{section.text}</p>}
-            <ul class='flex flex-col gap-5'>
+
+            <div class='flex flex-col gap-5'>
               {section.items.map((item) => (
-                <li class='flex flex-wrap items-center gap-x-2.5'>
-                  <span class='size-2 shrink-0 bg-beamer-bullet' />
-                  {item.name}
-                  <span class='flex flex-1 justify-between gap-x-2.5 text-text-muted *:last:ml-auto'>
-                    {item.detail && <span>{item.detail}</span>}
-                    {item.date && <span>{item.date}</span>}
-                  </span>
-                </li>
+                <div class='flex flex-wrap items-center gap-x-2.5 gap-y-1.5'>
+                  <div class='flex items-top gap-x-2.5'>
+                    <div class='size-2 shrink-0 bg-beamer-bullet mt-[7.5px]' />
+                    <span>{item.name}</span>
+                  </div>
+
+                  <div class='flex min-w-0 max-w-full flex-[1_0_max-content] flex-wrap gap-x-2.5 gap-y-1 text-text-muted'>
+                    {item.detail && (
+                      <span class='min-w-0 wrap-break-word'>{item.detail}</span>
+                    )}
+
+                    {item.date && (
+                      <span class='ml-auto shrink-0 whitespace-nowrap'>
+                        {item.date}
+                      </span>
+                    )}
+                  </div>
+                </div>
               ))}
-            </ul>
+            </div>
           </div>
         </section>
       ))
