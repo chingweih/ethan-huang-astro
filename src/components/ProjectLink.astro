@@ -13,9 +13,9 @@ const { title, href, meta } = Astro.props
 <a
   href={href}
   target='_blank'
-  class='group flex justify-between gap-3 border-b border-border pb-1'
+  class='group flex items-center justify-between gap-3 border-b border-border pb-1'
 >
-  <span class='flex max-w-3/4 min-w-0'>
+  <span class='flex max-w-3/4 min-w-0 items-center'>
     <TakeALook class='pr-1' />
     <span class='truncate'>{title}</span>
   </span>

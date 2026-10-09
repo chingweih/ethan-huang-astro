@@ -1,6 +1,8 @@
 @import 'tailwindcss';
 @plugin '@tailwindcss/typography';
 
+@custom-variant hover (&:hover);
+
 @theme {
   --font-sans: 'Inter Variable', 'Noto Sans TC Variable', sans-serif;
   --font-mono: 'JetBrains Mono Variable', 'Noto Sans TC Variable', monospace;
@@ -39,6 +41,8 @@
 
   --inset-shadow-polaroid: inset 0 0 6px rgb(0 0 0 / 0.25);
   --drop-shadow-card: 4px 4px 9px rgb(0 0 0 / 0.13);
+
+  --breakpoint-xs: 24rem;
 }
 
 @utility w-breakout {
