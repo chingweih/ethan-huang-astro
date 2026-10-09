@@ -106,56 +106,6 @@ export const projects: {
     imageFolder: 'traffic',
   },
   {
-    title: 'Crunching the numbers.',
-    description: `Using extensive regex and pdf parsers to finagle local government budget documents, find out what the new fiscal law could do to the local government's fiscal independence. (This is before LLMs can actually read files and I'm still proud of my regex masterpiece.)`,
-    links: [
-      {
-        title:
-          '《財劃法》數據科普幕後，我們如何處理近四千頁AI看不懂的政府預算書？',
-        href: 'https://medium.com/twreporter/財劃法-數據科普幕後-我們如何處理近四千頁ai看不懂的政府預算書-986d99185ef6',
-        meta: '2025/3/7',
-      },
-      {
-        title:
-          '【Data Reporter】數據科普《財劃法》修法影響：地方財源增加，區域發展更均衡？為何學界喜憂參半？',
-        href: 'https://www.twreporter.org/a/data-reporter-impacts-on-allocation-amendents',
-        meta: '2025/1/14',
-      },
-      {
-        title:
-          '中央對地方補助變少？統籌分配款公式有誤？新版《財劃法》分配爭議分析',
-        href: 'https://www.twreporter.org/a/allocation-amendments-controversy',
-        meta: '2025/9/12',
-      },
-    ],
-    imageFolder: 'fiscal',
-  },
-  {
-    title: `What does your phone do that you don't know?`,
-    description: `As a privacy conceus person myself, we've used mitmproxy to capture the network requests from three major mobile map apps, including Chinese "AMAP", to know what tracking information each is sending?`,
-    links: [
-      {
-        title:
-          '報導者實測：從台北街頭到中國伺服器…「高德地圖」有什麼資安疑慮？',
-        href: 'https://www.youtube.com/watch?v=wH_H9OC0qAc',
-        meta: '2026/7/7',
-      },
-      {
-        title:
-          '中國「高德地圖」跨境定位風險：每3秒回傳位置資訊、暗藏可追溯使用者代碼',
-        href: 'https://www.twreporter.org/a/national-security-data-privacy-china-amap-cross-border-tracking',
-        meta: '2026/6/26',
-      },
-      {
-        title:
-          '【Data Reporter】從台北街頭到中國伺服器，《報導者》實測「高德地圖」如何蒐集使用者資料',
-        href: 'https://www.twreporter.org/a/data-reporter-china-amap',
-        meta: '2026/6/26',
-      },
-    ],
-    imageFolder: 'amap',
-  },
-  {
     title: 'Investigating “remote upstream” rivers.',
     description:
       '(not git repos) Mapping potential drinking water intakes pollution by spatial cross-matching river, nearby factories and past penalty records.',
@@ -192,9 +142,40 @@ export const projects: {
     imageFolder: 'water-pollution',
   },
   {
+    title: `What does your phone do that you don't know?`,
+    description: `As a privacy conceus person myself, we've used mitmproxy to capture the network requests from three major mobile map apps, including Chinese "AMAP", to know what tracking information each is sending?`,
+    links: [
+      {
+        title:
+          '報導者實測：從台北街頭到中國伺服器…「高德地圖」有什麼資安疑慮？',
+        href: 'https://www.youtube.com/watch?v=wH_H9OC0qAc',
+        meta: '2026/7/7',
+      },
+      {
+        title:
+          '中國「高德地圖」跨境定位風險：每3秒回傳位置資訊、暗藏可追溯使用者代碼',
+        href: 'https://www.twreporter.org/a/national-security-data-privacy-china-amap-cross-border-tracking',
+        meta: '2026/6/26',
+      },
+      {
+        title:
+          '【Data Reporter】從台北街頭到中國伺服器，《報導者》實測「高德地圖」如何蒐集使用者資料',
+        href: 'https://www.twreporter.org/a/data-reporter-china-amap',
+        meta: '2026/6/26',
+      },
+    ],
+    imageFolder: 'amap',
+  },
+  {
     title: 'Disaster Response Toolkit for Taiwanese Citizens',
     description: `I've built iCanHelp app, a collection of helpful tools for disaster preparedness. Built with full-stack Next.js with native bundles using Expo.js, during my time at Forward Alliance.`,
     links: [
+      {
+        title:
+          '壯闊台灣「協作地圖」全新升級！幕後團隊分享，我們如何思考應變知識普及與公民協作維護公開資料品質？',
+        href: 'https://www.forward.org.tw/tw/a/inside-collaborative-maps-update',
+        meta: '2026/6/12',
+      },
       {
         title: 'iCanHelp App',
         href: 'https://app.icanhelp.tw',
@@ -214,6 +195,31 @@ export const projects: {
       },
     ],
     imageFolder: 'carbon-notebook',
+  },
+  {
+    title: 'Crunching the numbers.',
+    description: `Using extensive regex and pdf parsers to finagle local government budget documents, find out what the new fiscal law could do to the local government's fiscal independence. (This is before LLMs can actually read files and I'm still proud of my regex masterpiece.)`,
+    links: [
+      {
+        title:
+          '《財劃法》數據科普幕後，我們如何處理近四千頁AI看不懂的政府預算書？',
+        href: 'https://medium.com/twreporter/財劃法-數據科普幕後-我們如何處理近四千頁ai看不懂的政府預算書-986d99185ef6',
+        meta: '2025/3/7',
+      },
+      {
+        title:
+          '【Data Reporter】數據科普《財劃法》修法影響：地方財源增加，區域發展更均衡？為何學界喜憂參半？',
+        href: 'https://www.twreporter.org/a/data-reporter-impacts-on-allocation-amendents',
+        meta: '2025/1/14',
+      },
+      {
+        title:
+          '中央對地方補助變少？統籌分配款公式有誤？新版《財劃法》分配爭議分析',
+        href: 'https://www.twreporter.org/a/allocation-amendments-controversy',
+        meta: '2025/9/12',
+      },
+    ],
+    imageFolder: 'fiscal',
   },
   {
     title: 'Understanding Taiwanese Local Politics.',
