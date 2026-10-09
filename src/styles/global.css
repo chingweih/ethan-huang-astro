@@ -10,12 +10,12 @@
   --font-slab: 'Roboto Slab Variable', 'Noto Sans TC Variable', serif;
   --font-hand: 'Reenie Beanie', 'Noto Sans TC Variable', cursive;
 
-  --text-xs--line-height: normal;
-  --text-sm--line-height: normal;
-  --text-base--line-height: normal;
-  --text-lg--line-height: normal;
-  --text-2xl--line-height: normal;
-  --text-3xl--line-height: normal;
+  --text-xs--line-height: 1.25;
+  --text-sm--line-height: 1.25;
+  --text-base--line-height: 1.25;
+  --text-lg--line-height: 1.25;
+  --text-2xl--line-height: 1.25;
+  --text-3xl--line-height: 1.25;
 
   --color-bg: #f1f1f1;
   --color-text: #333333;
