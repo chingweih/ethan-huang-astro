@@ -1,0 +1,71 @@
+---
+import type { ImageMetadata } from 'astro'
+import { Image } from 'astro:assets'
+import AutoScroll from '../components/AutoScroll.svelte'
+import ProjectLink from '../components/ProjectLink.astro'
+import { projects } from '../data/projects'
+import Page from '../layouts/Page.astro'
+
+const images = Object.entries(
+  import.meta.glob<ImageMetadata>(
+    '/src/assets/projects/*/*.{avif,jpeg,jpg,png,webp}',
+    { eager: true, import: 'default' },
+  ),
+).sort(([a], [b]) => a.localeCompare(b, undefined, { numeric: true }))
+---
+
+<Page title='things I helped create'>
+  <h1 class='border-b border-border pb-2 font-pixel text-lg'>
+    behind the stories, things i helped create.
+  </h1>
+  <div class='flex flex-col gap-7 py-8'>
+    {
+      projects.map((project) => (
+        <article class='flex flex-col gap-x-11 gap-y-5 py-2.5 md:flex-row md:items-center'>
+          <div class='flex flex-col justify-between gap-5 self-stretch py-4 md:w-1/2'>
+            <div class='flex flex-col gap-2.5'>
+              <h2 class='text-lg'>{project.title}</h2>
+              <p class='text-sm'>{project.description}</p>
+            </div>
+            <div class='flex flex-col gap-2.5 text-xs text-text-muted'>
+              {project.links.slice(0, 2).map((link) => (
+                <ProjectLink {...link} />
+              ))}
+              {project.links.length > 2 && (
+                <details class='group/more'>
+                  <summary class='cursor-pointer list-none group-open/more:hidden [&::-webkit-details-marker]:hidden'>
+                    ＋ More
+                  </summary>
+                  <div class='flex flex-col gap-2.5'>
+                    {project.links.slice(2).map((link) => (
+                      <ProjectLink {...link} />
+                    ))}
+                  </div>
+                </details>
+              )}
+            </div>
+          </div>
+          <div class='min-w-0 flex-1'>
+            <AutoScroll client:visible>
+              {images
+                .filter(([path]) =>
+                  path.startsWith(
+                    `/src/assets/projects/${project.imageFolder}/`,
+                  ),
+                )
+                .map(([, image]) => (
+                  <Image
+                    src={image}
+                    alt=''
+                    height={384}
+                    draggable='false'
+                    class='h-48 w-auto shrink-0 rounded-sm border border-border'
+                  />
+                ))}
+            </AutoScroll>
+          </div>
+        </article>
+      ))
+    }
+  </div>
+</Page>
