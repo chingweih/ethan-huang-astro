@@ -2,7 +2,7 @@ import type { ImageMetadata } from 'astro'
 import exifr from 'exifr'
 
 const images = import.meta.glob<ImageMetadata>(
-  '/src/assets/snapshots/*.{avif,jpeg,jpg,png,webp}',
+  '/collections/snapshots/*.{avif,jpeg,jpg,png,webp}',
   { eager: true, import: 'default' },
 )
 

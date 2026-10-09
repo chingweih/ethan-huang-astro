@@ -4,13 +4,13 @@ import { getImage, Image } from 'astro:assets'
 import AutoScroll from '../components/AutoScroll.svelte'
 import MoreLinks from '../components/MoreLinks.svelte'
 import ProjectLink from '../components/ProjectLink.astro'
-import { projects } from '../data/projects'
+import { projects } from '../../collections/projects'
 import Page from '../layouts/Page.astro'
 
 const images = await Promise.all(
   Object.entries(
     import.meta.glob<ImageMetadata>(
-      '/src/assets/projects/*/*.{avif,jpeg,jpg,png,webp}',
+      '/collections/projects/*/*.{avif,jpeg,jpg,png,webp}',
       { eager: true, import: 'default' },
     ),
   )
@@ -59,7 +59,7 @@ const images = await Promise.all(
               {images
                 .filter(({ path }) =>
                   path.startsWith(
-                    `/src/assets/projects/${project.imageFolder}/`,
+                    `/collections/projects/${project.imageFolder}/`,
                   ),
                 )
                 .map(({ image, full }) => (
