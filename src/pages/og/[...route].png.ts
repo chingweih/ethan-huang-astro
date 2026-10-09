@@ -14,7 +14,7 @@ const span = (fontWeight: number, children: string) => ({
 const HOME = [
   'Hi, I’m ',
   span(700, 'Ethan Huang'),
-  '. Data engineer, sometime journalist, making cool maps and moving charts.',
+  '. Data engineer, occasional journalist, making cool maps and moving charts.',
 ]
 
 export async function getStaticPaths() {
