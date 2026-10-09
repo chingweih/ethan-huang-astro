@@ -31,8 +31,11 @@ const [latest, previous] = snapshots
         >.
       </p>
     </div>
-    <a href='/snapshots' class='flex flex-col items-center gap-2.5 px-2.5'>
-      <div class='relative h-96 w-104 max-w-full'>
+    <a
+      href='/snapshots'
+      class='flex flex-col items-center gap-2.5 self-stretch px-2.5 md:self-auto'
+    >
+      <div class='relative h-96 w-104 max-w-full max-xs:scale-85'>
         <Polaroid
           image={previous.image}
           caption={previous.caption}
