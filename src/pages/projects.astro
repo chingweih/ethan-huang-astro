@@ -2,6 +2,7 @@
 import type { ImageMetadata } from 'astro'
 import { Image } from 'astro:assets'
 import AutoScroll from '../components/AutoScroll.svelte'
+import MoreLinks from '../components/MoreLinks.svelte'
 import ProjectLink from '../components/ProjectLink.astro'
 import { projects } from '../data/projects'
 import Page from '../layouts/Page.astro'
@@ -34,16 +35,11 @@ const images = Object.entries(
                 <ProjectLink {...link} />
               ))}
               {project.links.length > 2 && (
-                <details class='group/more'>
-                  <summary class='cursor-pointer list-none group-open/more:hidden [&::-webkit-details-marker]:hidden'>
-                    ＋ More
-                  </summary>
-                  <div class='flex flex-col gap-2.5'>
-                    {project.links.slice(2).map((link) => (
-                      <ProjectLink {...link} />
-                    ))}
-                  </div>
-                </details>
+                <MoreLinks client:visible>
+                  {project.links.slice(2).map((link) => (
+                    <ProjectLink {...link} />
+                  ))}
+                </MoreLinks>
               )}
             </div>
           </div>

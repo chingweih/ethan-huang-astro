@@ -30,12 +30,14 @@ import Layout from '../layouts/Layout.astro'
             <div class='flex flex-col gap-5'>
               {section.items.map((item) => (
                 <div class='flex flex-wrap items-center gap-x-2.5 gap-y-1.5'>
-                  <div class='flex items-top gap-x-2.5'>
-                    <div class='size-2 shrink-0 bg-beamer-bullet mt-[7.5px]' />
+                  <div class='flex items-start gap-x-2.5'>
+                    <span class='flex h-lh shrink-0 items-center'>
+                      <span class='size-2 bg-beamer-bullet' />
+                    </span>
                     <span>{item.name}</span>
                   </div>
 
-                  <div class='flex min-w-0 max-w-full flex-[1_0_max-content] flex-wrap gap-x-2.5 gap-y-1 text-text-muted'>
+                  <div class='flex max-w-full min-w-0 shrink-0 grow flex-wrap gap-x-2.5 gap-y-1 text-text-muted'>
                     {item.detail && (
                       <span class='min-w-0 wrap-break-word'>{item.detail}</span>
                     )}
