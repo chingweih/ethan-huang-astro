@@ -136,6 +136,12 @@ export const projects: {
     links: [
       {
         title:
+          '報導者實測：從台北街頭到中國伺服器…「高德地圖」有什麼資安疑慮？',
+        href: 'https://www.youtube.com/watch?v=wH_H9OC0qAc',
+        meta: '2026/7/7',
+      },
+      {
+        title:
           '中國「高德地圖」跨境定位風險：每3秒回傳位置資訊、暗藏可追溯使用者代碼',
         href: 'https://www.twreporter.org/a/national-security-data-privacy-china-amap-cross-border-tracking',
         meta: '2026/6/26',
@@ -154,6 +160,11 @@ export const projects: {
     description:
       '(not git repos) Mapping potential drinking water intakes pollution by spatial cross-matching river, nearby factories and past penalty records.',
     links: [
+      {
+        title: '你家喝的自來水從哪來？乾淨嗎？從基隆嚴重油汙事件開始的全台調查',
+        href: 'https://www.youtube.com/watch?v=OFPd7Cj8XQE',
+        meta: '2026/7/3',
+      },
       {
         title:
           '【Data Reporter】互動式地圖揭10大風險流域：全台59處取水口上游疑未設保護區、汙染工廠逾300家',
