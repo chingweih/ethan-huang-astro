@@ -1,0 +1,62 @@
+---
+import { getImage, Image } from 'astro:assets'
+import Footer from '../components/Footer.astro'
+import Lightbox from '../components/Lightbox.svelte'
+import Nav from '../components/Nav.astro'
+import { snapshots } from '../data/snapshots'
+import Layout from '../layouts/Layout.astro'
+
+const gallery = await Promise.all(
+  snapshots.map(async (snapshot) => ({
+    ...snapshot,
+    full: await getImage({
+      src: snapshot.image,
+      width: Math.min(snapshot.image.width, 2400),
+    }),
+  })),
+)
+---
+
+<Layout title='snapshots of my life' class='relative bg-album text-white'>
+  <header class='absolute inset-x-0 top-0 z-10 pb-8'>
+    <div
+      class='absolute inset-0 -z-10 bg-linear-to-b from-black/85 to-transparent mask-b-from-0% backdrop-blur-lg'
+    >
+    </div>
+    <div class='mx-auto box-content flex max-w-content flex-col gap-2.5 px-5'>
+      <Nav variant='album' />
+      <h1 class='text-3xl font-semibold'>Ethan’s Album</h1>
+      <p class='font-semibold'>{snapshots.length} items</p>
+    </div>
+  </header>
+  <main class='px-2.5 pb-12'>
+    <Lightbox client:idle class='columns-1 gap-2.5 sm:columns-2 lg:columns-3'>
+      {
+        gallery.map(({ image, caption, settings, full }) => (
+          <a
+            href={full.src}
+            data-pswp-width={full.attributes.width}
+            data-pswp-height={full.attributes.height}
+            class='group relative mb-2.5 block break-inside-avoid overflow-hidden rounded-md'
+          >
+            <Image
+              src={image}
+              alt={caption}
+              widths={[480, 960, 1440]}
+              sizes='(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw'
+            />
+            <span class='absolute inset-0 flex flex-col justify-end gap-1 bg-linear-to-b from-transparent to-black/80 p-6 opacity-0 transition-opacity group-hover:opacity-100'>
+              <span class='font-bold'>{caption}</span>
+              {settings.length > 0 && (
+                <span class='text-sm text-white/80'>
+                  {settings.join(' · ')}
+                </span>
+              )}
+            </span>
+          </a>
+        ))
+      }
+    </Lightbox>
+  </main>
+  <Footer class='justify-center text-white [&_a]:text-white' />
+</Layout>
