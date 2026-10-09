@@ -1,0 +1,18 @@
+---
+import type { ComponentProps } from 'astro/types'
+import Footer from '../components/Footer.astro'
+import Nav from '../components/Nav.astro'
+import Layout from './Layout.astro'
+
+type Props = ComponentProps<typeof Layout>
+---
+
+<Layout {...Astro.props}>
+  <div class='mx-auto box-content flex min-h-svh max-w-content flex-col px-5'>
+    <Nav />
+    <main class='flex flex-1 flex-col py-20'>
+      <slot />
+    </main>
+    <Footer />
+  </div>
+</Layout>

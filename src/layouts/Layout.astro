@@ -1,42 +1,42 @@
 ---
-import '@fontsource-variable/inter-tight'
+import '@fontsource-variable/inter'
 import '@fontsource-variable/jetbrains-mono'
 import '@fontsource-variable/noto-sans-tc'
-import '@fontsource-variable/noto-serif-tc'
 import '@fontsource-variable/pixelify-sans'
-import '@fontsource/pt-serif/400.css'
-import '@fontsource/pt-serif/700.css'
+import '@fontsource-variable/roboto-slab'
+import '@fontsource/reenie-beanie'
 import { cn } from '../lib/cn'
 import '../styles/global.css'
-import Navigation from '../components/Navigation.astro'
 
 interface Props {
   title?: string
   description?: string
   class?: string
-  header?: boolean
 }
 
 const DEFAULTS = {
   title: 'Ethan Huang 黃靖緯',
   description:
-    'Poli-Sci student by day, developer by curiosity. Creating insightful data analysis and bringing stories to life.',
+    'Data engineer, sometime journalist, making cool maps and moving charts.',
 }
 
 const TEMPLATE = {
-  title: '｜EH',
+  title: '｜Ethan Huang',
 }
 
 const {
   title: titleProps,
   description: descriptionProps,
   class: className,
-  header: includeHeader = true,
 } = Astro.props
 
 const props = {
   title: titleProps ? `${titleProps}${TEMPLATE.title}` : DEFAULTS.title,
   description: descriptionProps ?? DEFAULTS.description,
+  image: new URL(
+    `/og${Astro.url.pathname.replace(/\/$/, '') || '/index'}.png`,
+    Astro.site,
+  ),
 }
 
 const metadata = {
@@ -53,17 +53,16 @@ const metadata = {
     <link rel='icon' href='/favicon.png' />
     <meta name='generator' content={Astro.generator} />
     <meta name='description' content={props.description} />
-    <meta name='og:title' content={props.title} />
-    <meta name='og:description' content={props.description} />
+    <meta property='og:title' content={props.title} />
+    <meta property='og:description' content={props.description} />
+    <meta property='og:image' content={props.image} />
+    <meta name='twitter:card' content='summary_large_image' />
     <meta name='twitter:title' content={props.title} />
     <meta name='twitter:description' content={props.description} />
     <meta name='twitter:site' content={metadata.twitterHandle} />
     <title>{props.title}</title>
   </head>
-  <body class='bg-bg text-foreground font-serif blueprint-grid'>
-    <div class={cn('mx-auto w-full max-w-152 px-5 py-8', className)}>
-      <Navigation />
-      <slot />
-    </div>
+  <body class={cn('bg-bg font-sans text-text', className)}>
+    <slot />
   </body>
 </html>
