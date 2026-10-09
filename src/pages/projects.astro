@@ -25,7 +25,9 @@ const images = Object.entries(
           <div class='flex flex-col justify-between gap-5 self-stretch py-4 md:w-1/2'>
             <div class='flex flex-col gap-2.5'>
               <h2 class='text-lg'>{project.title}</h2>
-              <p class='text-sm'>{project.description}</p>
+              {project.description && (
+                <p class='text-sm'>{project.description}</p>
+              )}
             </div>
             <div class='flex flex-col gap-2.5 text-xs text-text-muted'>
               {project.links.slice(0, 2).map((link) => (
