@@ -1,0 +1,26 @@
+---
+import type { ImageMetadata } from 'astro'
+import { Image } from 'astro:assets'
+
+interface Props {
+  src: ImageMetadata
+  alt: string
+}
+
+const { src, alt } = Astro.props
+
+// MDX wraps images in <p>, so this uses spans instead of <figure> to stay valid HTML
+---
+
+<span
+  class='not-prose relative left-1/2 flex w-breakout -translate-x-1/2 flex-col items-center gap-4 py-5'
+>
+  <Image
+    src={src}
+    alt={alt}
+    widths={[928, 1856]}
+    sizes='(min-width: 968px) 928px, calc(100vw - 40px)'
+    class='w-full rounded-md'
+  />
+  {alt && <span class='text-text-muted'>{alt}</span>}
+</span>

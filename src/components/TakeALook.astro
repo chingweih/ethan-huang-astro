@@ -1,0 +1,19 @@
+---
+interface Props {
+  class?: string
+}
+---
+
+<span
+  aria-hidden='true'
+  class='max-w-0 shrink-0 overflow-hidden transition-all duration-300 ease-out group-hover:max-w-32 group-focus-visible:max-w-32 motion-reduce:transition-none'
+>
+  <span
+    class:list={[
+      'block -translate-x-full font-pixel whitespace-nowrap text-accent transition-transform duration-300 ease-out group-hover:translate-x-0 group-focus-visible:translate-x-0 motion-reduce:transition-none',
+      Astro.props.class,
+    ]}
+  >
+    take a look &gt;&gt;
+  </span>
+</span>

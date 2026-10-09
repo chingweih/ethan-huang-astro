@@ -1,0 +1,37 @@
+---
+import { getCollection, render } from 'astro:content'
+import Figure from '../../components/Figure.astro'
+import Page from '../../layouts/Page.astro'
+
+export async function getStaticPaths() {
+  const notes = await getCollection('notes')
+  return notes.map((note) => ({
+    params: { slug: note.id },
+    props: { note },
+  }))
+}
+
+const { note } = Astro.props
+
+const { Content } = await render(note)
+---
+
+<Page title={note.data.title}>
+  <article class='mx-auto w-full max-w-article'>
+    <header class='flex flex-col gap-2.5 pb-10'>
+      <p class='font-pixel text-accent'>
+        {
+          note.data.date.toLocaleString('en-US', {
+            month: 'short',
+            year: 'numeric',
+            timeZone: 'UTC',
+          })
+        }
+      </p>
+      <h1 class='text-2xl font-medium'>{note.data.title}</h1>
+    </header>
+    <div class='prose max-w-none'>
+      <Content components={{ img: Figure }} />
+    </div>
+  </article>
+</Page>
