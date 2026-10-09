@@ -1,134 +1,50 @@
 ---
-import { Github } from 'simple-icons-astro'
-import Layout from '../layouts/Layout.astro'
-import Info from '../components/Info.astro'
+import Name from '../components/Name.svelte'
+import Polaroid from '../components/Polaroid.astro'
+import { snapshots } from '../data/snapshots'
+import Page from '../layouts/Page.astro'
+
+const [latest, previous] = snapshots
 ---
 
-<Layout>
-  <div class='min-h-svh flex flex-col items-start justify-center gap-12'>
-    <div class='space-y-3 text-[clamp(1.25rem,1.1rem+0.7vw,1.5rem)]'>
-      Hi, I'm <div
-        class='text-primary font-bold inline-block relative hover:[&>p]:w-full pr-1'
-      >
-        Ethan Huang<p
-          class='absolute top-0 left-0 h-full bg-bg w-0 overflow-hidden text-nowrap transition-all ease-in-out'
-        >
-          黃靖緯
-        </p>
-      </div>. Data engineer, sometime journalist, and the one who makes the
-      charts move. Political science taught me that every dataset is somebody's
-      decision.
+<Page>
+  <div
+    class='flex flex-1 flex-col items-center justify-center gap-10 md:flex-row md:justify-between'
+  >
+    <div class='flex max-w-lg flex-col gap-10'>
+      <p class='text-2xl'>
+        Hi, I’m <Name client:visible />. Data engineer, sometime journalist,
+        making cool maps and moving charts <a
+          href='https://www.twreporter.org'
+          class='font-medium'>@twreporter</a
+        >.
+      </p>
+      <p class='text-lg text-text-muted'>
+        <span class='font-medium'>Political science</span> taught me that every dataset
+        is somebody's decision.
+      </p>
+      <p class='text-lg [&_a]:underline'>
+        Welcome to my corner of the web, you can find <a href='/projects'
+          >things I helped create</a
+        >, <a href='/notes'>my messy writings</a> or <a href='/snapshots'
+          >snapshots of my life</a
+        >.
+      </p>
     </div>
-    <div class='space-y-8'>
-      <div class='space-y-2'>
-        <h2 class='font-bold text-xl font-pixel'>Projects</h2>
-        <ul class='space-y-5'>
-          <li>
-            <Info
-              title='Realtime Election Infographics'
-              descriptions={[
-                'An interactive map visualizing election results and their distribution across multiple regions.',
-                'Svelte, Web Component, Vite, Typescript',
-              ]}
-              href='https://www.twreporter.org/a/data-reporter-2025-823-recall-results'
-            />
-          </li>
-          <li>
-            <Info
-              title='Data-driven Journalism'
-              descriptions={[
-                'Analyzing critical social and political issues through numbers from government fiscal documents to provide actionable insights.',
-                'Python, QGIS',
-              ]}
-              href='https://www.twreporter.org/a/data-reporter-impacts-on-allocation-amendents'
-            />
-          </li>
-          <li>
-            <Info
-              title='iCanHelp App'
-              descriptions={[
-                'A set of tools and guides packed in an all-in-one app for Taiwanese society to be prepared for the disasters.',
-                'Next.js, React, Typescript',
-              ]}
-              href='https://app.icanhelp.tw'
-            />
-          </li>
-          <li>
-            <Info
-              title='codefest.taipei Hackathon Project'
-              descriptions={[
-                'We built a microservice, embeddable within Taipei\'s citizen app "Town Pass," in just 24 hours.',
-                'Next.js, Flutter',
-              ]}
-              href='https://github.com/face-on-keyboard/web'
-            />
-            <li>
-              <Info
-                title='NTU PS Camp Companion App'
-                descriptions={[
-                  'A centralized platform that streamlined communication and enhanced the overall gaming experience for camp participants.',
-                  'Next.js, Supabase',
-                ]}
-                href='https://ntupscamp.vercel.app'
-              />
-            </li>
-            <li>
-              <Info
-                title='Highschool Student Project Showcase Website'
-                descriptions={[
-                  'My pandemic project that got me into building websites.',
-                ]}
-                href='https://ckhsc16.github.io'
-              />
-            </li>
-          </li>
-        </ul>
+    <a href='/snapshots' class='flex flex-col items-center gap-2.5 px-2.5'>
+      <div class='relative h-96 w-104 max-w-full'>
+        <Polaroid
+          image={previous.image}
+          caption={previous.caption}
+          class='absolute top-1/2 left-1/2 -mt-2.5 -ml-9 -translate-1/2 -rotate-7'
+        />
+        <Polaroid
+          image={latest.image}
+          caption={latest.caption}
+          class='absolute top-1/2 left-1/2 mt-5.5 ml-13 -translate-1/2'
+        />
       </div>
-      <div class='w-full h-px bg-primary-muted'></div>
-      <div class='space-y-2'>
-        <h2 class='font-bold text-xl font-pixel'>Experience</h2>
-        <ul class='space-y-5'>
-          <Info
-            title='The Reporter'
-            descriptions={[
-              'Non-profit media organization focused on investigative journalism.',
-              'Data Engineer & Data Journalist',
-            ]}
-            href='https://www.twreporter.org/'
-          />
-          <Info
-            title='Forward Alliance'
-            descriptions={[
-              'A NGO dedicated to build community and resiliency. Empowering citizens with digital tools and emergency response trainings.',
-              'Head of Research & Development (2022.06-2026.06)',
-            ]}
-            href='https://www.forward.org.tw'
-          />
-        </ul>
-      </div>
-      <div class='w-full h-px bg-primary-muted'></div>
-
-      <div>
-        <ul class='text-sm'>
-          <li>
-            <h2 class='font-bold text-xl font-pixel'>Education</h2>
-            <p class='italic'>
-              Bachelor, Department of Political Science, National Taiwan
-              University.
-            </p>
-          </li>
-        </ul>
-      </div>
-    </div>
-    <div class='flex flex-col mt-2 gap-5 justify-start items-center w-full'>
-      <div class='flex items-center justify-start gap-2'>
-        <a href='https://github.com/chingweih' target='_blank'
-          ><Github size={16} /></a
-        >
-        <a href='mailto:e@ethanhuang.me' class='underline text-sm'
-          >e@ethanhuang.me</a
-        >
-      </div>
-    </div>
+      <p class='text-sm text-text-muted'>recent snapshots</p>
+    </a>
   </div>
-</Layout>
+</Page>
