@@ -3,12 +3,14 @@
   import AutoScroll from 'embla-carousel-auto-scroll'
   import { WheelGesturesPlugin } from 'embla-carousel-wheel-gestures'
   import type { Snippet } from 'svelte'
+  import { lightbox } from '../lib/lightbox'
 
   let { children }: { children: Snippet } = $props()
 </script>
 
 <div
   class="cursor-grab overflow-hidden active:cursor-grabbing"
+  {@attach lightbox('[data-pswp-src]')}
   {@attach (viewport) => {
     const embla = EmblaCarousel(viewport, { dragFree: true, slides: 'img' }, [
       AutoScroll({
