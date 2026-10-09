@@ -8,7 +8,7 @@ export const cv: {
     text: 'I’m a data engineer and data journalist who turns public records into maps, trackers and charts people can read.',
     items: [
       {
-        name: 'Email: e@ethanhuang.me | Github: @chingweih | Website: https://ethanhuang.me',
+        name: 'Email: e@ethanhuang.me | GitHub: @chingweih | Website: https://ethanhuang.me',
       },
     ],
   },
@@ -28,12 +28,12 @@ export const cv: {
       {
         name: 'National Chengchi University 國立政治大學',
         detail: 'Research Assistant',
-        date: '2025 Dec — 2026 June',
+        date: 'Dec 2025 — June 2026',
       },
       {
         name: 'Radio Taiwan International 中央廣播電台',
         detail: 'English Program & Web Service Team Intern',
-        date: '2022 July — Aug',
+        date: 'July — Aug 2022',
       },
     ],
   },
@@ -51,16 +51,16 @@ export const cv: {
     title: 'Skills',
     items: [
       {
-        name: 'Full-stack | Typescript with React, Expo.js, Next.js, Hono.js',
-        detail: 'Shipped full-stack PWA and native app bundle',
+        name: 'Full-stack | TypeScript with React, Expo, Next.js, Hono',
+        detail: 'Shipped a full-stack PWA and native app bundles',
       },
       {
-        name: 'Interactive | Svelte.js with Web Components',
+        name: 'Interactive | Svelte with Web Components',
         detail: 'Embedded interactive graphics inside news articles',
       },
       {
         name: 'Data & Infra | Python with FastAPI, BigQuery, QGIS',
-        detail: 'Building crawler databases and data analysis',
+        detail: 'Built crawlers, databases, and analysis pipelines',
       },
     ],
   },

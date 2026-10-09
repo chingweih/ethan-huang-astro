@@ -7,7 +7,7 @@ export const projects: {
   {
     title: 'What’s wrong with the “traffic circles” in Taiwan?',
     description:
-      'I clustered millions of official accident records to recreate what failed at each roundabout, so we can build more "roundabouts", less "traffic circles".',
+      'Using the DBSCAN algorithum to cluster thousands of official accident records, I tried to recreate what goes wrong at each roundabout, so we can build more roundabouts, fewer “traffic circles”.',
     links: [
       {
         title:
@@ -31,9 +31,9 @@ export const projects: {
     imageFolder: 'roundabouts',
   },
   {
-    title: `Tracking PLA drills and Taiwan's preparedness`,
+    title: `Tracking PLA drills and Taiwan’s preparedness`,
     description:
-      "We've collected millions of AIS records and years of PLA activities around Taiwan, helping us understand what’s happening around us during those mysterious drills.",
+      'We’ve collected millions of AIS records and years of PLA activities around Taiwan, helping us rebuild the Hong Tai’s track before it cut Taiwan’s undersea cable and understand what’s happening around us during those mysterious drills.',
     links: [
       {
         title:
@@ -62,8 +62,8 @@ export const projects: {
     imageFolder: 'military',
   },
   {
-    title: `What makes a cheering song sounds "Taiwan"?`,
-    description: `An experiment to use embedding models to understand music. We've created interactive components so that plays and visualize what changes in the music's groove affect the lisening experience.`,
+    title: `What makes a cheering song sound “Taiwan”?`,
+    description: `An experiment in using embedding models to understand music. We’ve created interactive components that play audio and visualize how changes in the music’s groove affect the listening experience.`,
     links: [
       {
         title:
@@ -75,9 +75,9 @@ export const projects: {
     imageFolder: 'baseball-music',
   },
   {
-    title: `Let's all commute more safely.`,
+    title: `Let’s all commute more safely.`,
     description:
-      'Paying closer attention to our day-to-day life, from newly built, "engineering feat" bridge to your local elemetary schools.',
+      'Paying closer attention to our day-to-day life, from a newly built “engineering feat” bridge to your local elementary schools.',
     links: [
       {
         title:
@@ -108,7 +108,7 @@ export const projects: {
   {
     title: 'Investigating “remote upstream” rivers.',
     description:
-      '(not git repos) Mapping potential drinking water intakes pollution by spatial cross-matching river, nearby factories and past penalty records.',
+      '(not git repos) Mapping potential pollution of drinking water intakes by spatially cross-matching rivers, nearby factories, and past penalty records.',
     links: [
       {
         title: '你家喝的自來水從哪來？乾淨嗎？從基隆嚴重油汙事件開始的全台調查',
@@ -142,8 +142,8 @@ export const projects: {
     imageFolder: 'water-pollution',
   },
   {
-    title: `What does your phone do that you don't know?`,
-    description: `As a privacy conceus person myself, we've used mitmproxy to capture the network requests from three major mobile map apps, including Chinese "AMAP", to know what tracking information each is sending?`,
+    title: `What does your phone do that you don’t know?`,
+    description: `As a privacy-conscious person, I wanted to know what map apps send home. We ran mobile navigation apps through mitmproxy on a small roadtrip around Taipei.`,
     links: [
       {
         title:
@@ -167,8 +167,8 @@ export const projects: {
     imageFolder: 'amap',
   },
   {
-    title: 'Disaster Response Toolkit for Taiwanese Citizens',
-    description: `I've built iCanHelp app, a collection of helpful tools for disaster preparedness. Built with full-stack Next.js with native bundles using Expo.js, during my time at Forward Alliance.`,
+    title: 'A disaster response toolkit for Taiwan.',
+    description: `I built iCanHelp app, a collection of helpful tools for disaster preparedness, during my time at Forward Alliance. Full-stack Next.js with native bundles using Expo.js.`,
     links: [
       {
         title:
@@ -185,20 +185,20 @@ export const projects: {
     imageFolder: 'icanhelp',
   },
   {
-    title: 'Hackathon Project: Carbon Notebook',
-    description: `We built a microservice that help people recognize their carbon footprint and how can they save more from their daily lives, which is also embeddable within Taipei's citizen app "Town Pass," in a 24 hour hackathon and won second place.`,
+    title: 'Hackathon project: Carbon Notebook',
+    description: `In a 24-hour hackathon, we built a Town Pass microservice that estimates your carbon footprint from e-invoices and GPS and shows you how to cut it. Second place at the 2025 codefest.taipei hackathon.`,
     links: [
       {
         title: 'taipei-doit/townpass2025-carbon-notebook',
         href: 'https://github.com/taipei-doit/townpass2025-carbon-notebook',
-        meta: 'Github',
+        meta: 'GitHub',
       },
     ],
     imageFolder: 'carbon-notebook',
   },
   {
     title: 'Crunching the numbers.',
-    description: `Using extensive regex and pdf parsers to finagle local government budget documents, find out what the new fiscal law could do to the local government's fiscal independence. (This is before LLMs can actually read files and I'm still proud of my regex masterpiece.)`,
+    description: `Using extensive regex and PDF parsers to finagle local government budget documents and find out what the new fiscal law could do to local governments' fiscal independence. (This was before LLMs can actually read files and I’m still proud of my regex masterpiece.)`,
     links: [
       {
         title:
@@ -222,9 +222,9 @@ export const projects: {
     imageFolder: 'fiscal',
   },
   {
-    title: 'Understanding Taiwanese Local Politics.',
+    title: `Understanding Taiwan’s local politics.`,
     description:
-      'I helped visualize political phenomenon from political family network to village level maps for local election results.',
+      'I helped visualize political phenomena from political family networks to village-level maps for local election results.',
     links: [
       {
         title: '從林派到英系，陳明文「嘉義王」之路與派系接班隱憂',
