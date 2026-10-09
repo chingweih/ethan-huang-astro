@@ -1,0 +1,23 @@
+---
+import TakeALook from './TakeALook.astro'
+
+interface Props {
+  title: string
+  href: string
+  meta: string
+}
+
+const { title, href, meta } = Astro.props
+---
+
+<a
+  href={href}
+  target='_blank'
+  class='group flex items-center justify-between gap-3 border-b border-border pb-1'
+>
+  <span class='flex max-w-3/4 min-w-0 items-center'>
+    <TakeALook class='pr-1' />
+    <span class='truncate font-slab'>{title}</span>
+  </span>
+  <span class='shrink-0'>{meta}</span>
+</a>

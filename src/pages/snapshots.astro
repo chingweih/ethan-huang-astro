@@ -1,0 +1,80 @@
+---
+import { getImage, Image } from 'astro:assets'
+import Footer from '../components/Footer.astro'
+import Lightbox from '../components/Lightbox.svelte'
+import Nav from '../components/Nav.astro'
+import { snapshots } from '../../collections/snapshots'
+import Layout from '../layouts/Layout.astro'
+
+const COLUMNS = 3
+
+const gallery = await Promise.all(
+  snapshots.map(async (snapshot, index) => ({
+    ...snapshot,
+    index,
+    full: await getImage({
+      src: snapshot.image,
+      width: Math.min(snapshot.image.width, 2400),
+    }),
+  })),
+)
+
+const columns = Array.from({ length: COLUMNS }, (_, column) =>
+  gallery.filter(({ index }) => index % COLUMNS === column),
+)
+---
+
+<Layout title='snapshots of my life' class='relative bg-album text-white'>
+  <header class='sticky inset-x-0 top-0 z-10 pb-8'>
+    <div
+      class='absolute inset-0 -z-10 bg-linear-to-b from-black/85 to-transparent mask-b-from-0% backdrop-blur-lg'
+    >
+    </div>
+    <div class='mx-auto box-content flex max-w-content flex-col gap-2.5 px-5'>
+      <Nav variant='album' />
+      <h1 class='text-3xl font-semibold'>Ethan’s Album</h1>
+      <p class='font-semibold'>{snapshots.length} items</p>
+    </div>
+  </header>
+  <main class='p-2.5 pb-12'>
+    <Lightbox
+      client:idle
+      items='[data-gallery-item]'
+      class='flex flex-col gap-2.5 sm:flex-row sm:items-start'
+    >
+      {
+        columns.map((column) => (
+          <div class='contents sm:flex sm:min-w-0 sm:flex-1 sm:flex-col sm:gap-2.5'>
+            {column.map(({ image, caption, settings, full, index }) => (
+              <div
+                data-gallery-item
+                data-pswp-src={full.src}
+                data-pswp-width={full.attributes.width}
+                data-pswp-height={full.attributes.height}
+                style={`order: ${index}`}
+                class='group relative cursor-zoom-in overflow-hidden rounded-md'
+              >
+                <Image
+                  src={image}
+                  alt={caption}
+                  widths={[480, 960, 1440]}
+                  sizes='(min-width: 640px) 33vw, 100vw'
+                  class='w-full'
+                />
+                <span class='absolute inset-0 flex flex-col justify-end gap-1.5 bg-linear-to-b from-transparent to-black/80 p-6 text-sm opacity-0 transition-opacity group-hover:opacity-100'>
+                  <span>{caption}</span>
+                  {settings.length > 0 && (
+                    <span class='font-mono text-xs text-white/80'>
+                      {settings.join(' · ')}
+                    </span>
+                  )}
+                </span>
+              </div>
+            ))}
+          </div>
+        ))
+      }
+    </Lightbox>
+  </main>
+  <Footer class='justify-center text-white [&_a]:text-white' />
+</Layout>

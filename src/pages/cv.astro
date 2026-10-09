@@ -1,0 +1,65 @@
+---
+import Nav from '../components/Nav.astro'
+import { cv } from '../../collections/cv'
+import Layout from '../layouts/Layout.astro'
+---
+
+<Layout title="cv, if you're interested" class='bg-beamer-page font-slab'>
+  <header class='sticky top-0 z-10 text-white'>
+    <div class='bg-beamer-nav px-5'>
+      <Nav variant='beamer' class='mx-auto h-9 max-w-content' />
+    </div>
+    <div class='bg-beamer-title px-5'>
+      <h1
+        class='mx-auto flex h-20 max-w-content items-center text-3xl font-bold'
+      >
+        Ethan Huang
+      </h1>
+    </div>
+  </header>
+  <main class='mx-auto box-content flex max-w-4xl flex-col gap-10 px-5 py-14'>
+    {
+      cv.map((section) => (
+        <section class='drop-shadow-card'>
+          <h2 class='bg-beamer-header px-5 py-2.5 text-lg text-white'>
+            {section.title}
+          </h2>
+          <div class='flex flex-col gap-5 bg-beamer-card px-5 py-7'>
+            {section.text && <p>{section.text}</p>}
+
+            <div class='flex flex-col gap-5'>
+              {section.items.map((item) => (
+                <div class='flex flex-wrap items-center gap-x-2.5 gap-y-1.5'>
+                  <div class='flex items-start gap-x-2.5'>
+                    <span class='flex h-lh shrink-0 items-center'>
+                      <span class='size-2 bg-beamer-bullet' />
+                    </span>
+                    <span>{item.name}</span>
+                  </div>
+
+                  <div class='flex max-w-full min-w-0 shrink-0 grow flex-wrap gap-x-2.5 gap-y-1 text-text-muted'>
+                    {item.detail && (
+                      <span class='min-w-0 wrap-break-word'>{item.detail}</span>
+                    )}
+
+                    {item.date && (
+                      <span class='ml-auto shrink-0 whitespace-nowrap'>
+                        {item.date}
+                      </span>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      ))
+    }
+  </main>
+  <footer class='sticky bottom-0 bg-beamer-footer px-5 py-2.5 text-white'>
+    <p class='mx-auto max-w-content'>
+      Inspired by the Beamer theme my calculus teacher used, because it’s fun,
+      and why not.
+    </p>
+  </footer>
+</Layout>

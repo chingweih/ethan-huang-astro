@@ -1,0 +1,39 @@
+---
+import { getCollection } from 'astro:content'
+import TakeALook from '../../components/TakeALook.astro'
+import Page from '../../layouts/Page.astro'
+
+const notes = (await getCollection('notes')).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
+)
+const years = Map.groupBy(notes, (note) => note.data.date.getUTCFullYear())
+---
+
+<Page title='stuff I wrote'>
+  <h1 class='border-b border-border pb-2 font-pixel text-lg'>
+    stuff i wrote, mostly technical notes.
+  </h1>
+  {
+    [...years].map(([year, notes]) => (
+      <section class='flex flex-col gap-6 pt-8'>
+        <h2 class='border-b border-border pb-2 text-lg'>{year}</h2>
+        <div class='flex flex-col gap-4'>
+          {notes.map((note) => (
+            <a
+              href={`/notes/${note.id}`}
+              class='group flex justify-between gap-3 border-b border-border pb-1.5'
+            >
+              <span class='flex min-w-0 items-center'>
+                <TakeALook class='pr-1.5' />
+                <span class='truncate'>{note.data.title}</span>
+              </span>
+              <span class='shrink-0 text-text-muted transition-colors group-hover:text-text-muted-active'>
+                {`${note.data.date.toLocaleString('en-US', { month: 'short', timeZone: 'UTC' })}. ${note.data.date.getUTCDate()}`}
+              </span>
+            </a>
+          ))}
+        </div>
+      </section>
+    ))
+  }
+</Page>

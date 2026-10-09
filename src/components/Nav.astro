@@ -1,0 +1,71 @@
+---
+import { cn } from '../lib/cn'
+
+interface Props {
+  variant?: keyof typeof VARIANTS
+  class?: string
+}
+
+const VARIANTS = {
+  default: {
+    square: 'fill-logo',
+    tick: 'fill-white',
+    brand: 'text-black',
+    link: 'text-text-muted hover:text-text-muted-active',
+    active: 'text-text',
+  },
+  album: {
+    square: 'fill-accent',
+    tick: 'fill-white',
+    brand: 'text-white',
+    link: 'text-white',
+    active: 'text-white',
+  },
+  beamer: {
+    square: 'fill-white',
+    tick: 'fill-accent',
+    brand: 'text-white',
+    link: 'text-white',
+    active: 'text-white',
+  },
+}
+
+const LINKS = ['projects', 'snapshots', 'notes']
+
+const { variant = 'default', class: className } = Astro.props
+const style = VARIANTS[variant]
+---
+
+<nav
+  class={cn('flex h-14 items-center justify-between font-sans', className)}
+  style='view-transition-name: nav'
+>
+  <a href='/' class={cn('flex items-center gap-2.5 font-pixel', style.brand)}>
+    <svg width='20' height='20' viewBox='0 0 20 20' aria-hidden='true'>
+      <rect width='20' height='20' rx='2' class={style.square}></rect>
+      <rect x='10' y='3' width='2' height='4' rx='1' class={style.tick}></rect>
+      <rect x='14' y='4' width='2' height='4' rx='1' class={style.tick}></rect>
+    </svg>
+    <span
+      >ethan h<span class='hidden xs:inline'>uang</span><span
+        class='inline xs:hidden'>.</span
+      ></span
+    >
+  </a>
+  <div class='flex gap-2.5 *:transition-colors'>
+    {
+      LINKS.map((link) => (
+        <a
+          href={`/${link}`}
+          class={
+            Astro.url.pathname.startsWith(`/${link}`)
+              ? style.active
+              : style.link
+          }
+        >
+          {link}
+        </a>
+      ))
+    }
+  </div>
+</nav>

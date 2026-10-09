@@ -1,59 +1,110 @@
 @import 'tailwindcss';
 @plugin '@tailwindcss/typography';
 
+@custom-variant hover (&:hover);
+
 @theme {
-  --font-sans: 'Inter Tight Variable', 'Noto Sans TC Variable', sans-serif;
-  --font-serif: 'PT Serif', 'Noto Serif TC Variable', serif;
-  --font-mono: 'JetBrains Mono Variable', monospace;
-  --font-pixel: 'Pixelify Sans Variable', monospace;
+  --font-sans: 'Inter Variable', 'Noto Sans TC Variable', sans-serif;
+  --font-mono: 'JetBrains Mono Variable', 'Noto Sans TC Variable', monospace;
+  --font-pixel: 'Pixelify Sans Variable', 'Noto Sans TC Variable', monospace;
+  --font-slab: 'Roboto Slab Variable', 'Noto Sans TC Variable', serif;
+  --font-hand: 'Reenie Beanie', 'Noto Sans TC Variable', cursive;
 
-  --color-bg: #101010;
-  --color-primary: #ffc799;
-  --color-primary-muted: #333;
-  --color-foreground: #f1f1f1;
+  --text-xs--line-height: 1.25;
+  --text-sm--line-height: 1.25;
+  --text-base--line-height: 1.25;
+  --text-lg--line-height: 1.25;
+  --text-2xl--line-height: 1.25;
+  --text-3xl--line-height: 1.25;
+
+  --color-bg: #f1f1f1;
+  --color-text: #333333;
+  --color-text-muted: #707070;
+  --color-text-muted-active: #5d5d5d;
+  --color-border: #d0d0d0;
+  --color-accent: #0056cf;
+  --color-logo: #394a62;
+  --color-code: #fafafa;
+  --color-album: #262626;
+
+  --color-beamer-nav: #252686;
+  --color-beamer-title: #3333b2;
+  --color-beamer-page: #fcfcfc;
+  --color-beamer-header: #154a7c;
+  --color-beamer-card: #e3e7ec;
+  --color-beamer-bullet: #1974c4;
+  --color-beamer-footer: #191856;
+
+  --container-content: 60rem;
+  --container-article: 41.5rem;
+  --container-figure: 58rem;
+
+  --inset-shadow-polaroid: inset 0 0 6px rgb(0 0 0 / 0.25);
+  --drop-shadow-card: 4px 4px 9px rgb(0 0 0 / 0.13);
+
+  --breakpoint-xs: 24rem;
 }
 
-.bordered-table {
-  @apply border border-white;
+@utility w-breakout {
+  width: min(var(--container-figure), 100vw - --spacing(10));
 }
 
-.bordered-table th {
-  @apply border border-white px-1 py-2;
+@layer base {
+  body {
+    line-height: normal;
+    text-wrap: pretty;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  figcaption {
+    text-wrap: balance;
+  }
 }
 
-.bordered-table td {
-  @apply border border-white px-1 py-2;
+@view-transition {
+  navigation: auto;
 }
 
-.blueprint-grid {
-  background-image: linear-gradient(
-      to right,
-      rgba(255, 255, 255, 0.01) 1px,
-      transparent 1px
-    ),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.01) 1px, transparent 1px);
-  background-size: 25px 25px;
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none;
+  }
 }
 
-@utility tick-border {
-  border-bottom: 1px solid var(--color-primary-muted);
-  background-image: linear-gradient(
-      var(--color-primary-muted),
-      var(--color-primary-muted)
-    ),
-    linear-gradient(var(--color-primary-muted), var(--color-primary-muted)),
-    repeating-linear-gradient(
-      to right,
-      var(--color-primary-muted) 0 1px,
-      transparent 1px 22px
-    );
-  background-repeat: no-repeat;
-  background-size:
-    1px 7px,
-    1px 7px,
-    100% 4px;
-  background-position:
-    left bottom,
-    right bottom,
-    left bottom;
+.prose {
+  --tw-prose-body: var(--color-text);
+  --tw-prose-headings: var(--color-text);
+  --tw-prose-links: var(--color-text);
+  --tw-prose-bold: var(--color-text);
+  --tw-prose-code: var(--color-text);
+  --tw-prose-hr: var(--color-border);
+
+  & p {
+    margin-block: --spacing(7);
+  }
+
+  & h2 {
+    margin-block: --spacing(7);
+    padding-top: --spacing(7);
+    border-top: 1px solid var(--color-border);
+    font-size: var(--text-base);
+    font-weight: var(--font-weight-medium);
+    line-height: --spacing(7);
+  }
+
+  & pre {
+    padding: --spacing(5);
+    border-radius: var(--radius-md);
+    /* Overrides the inline background Shiki sets on <pre> */
+    background-color: var(--color-code) !important;
+    font-size: var(--text-base);
+    line-height: --spacing(7);
+  }
 }
