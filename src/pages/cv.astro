@@ -1,0 +1,52 @@
+---
+import Nav from '../components/Nav.astro'
+import { cv } from '../data/cv'
+import Layout from '../layouts/Layout.astro'
+---
+
+<Layout title="cv, if you're interested" class='bg-beamer-page font-slab'>
+  <header class='sticky top-0 z-10 text-white'>
+    <div class='bg-beamer-nav px-5'>
+      <Nav variant='beamer' class='mx-auto h-9 max-w-content' />
+    </div>
+    <div class='bg-beamer-title px-5'>
+      <h1
+        class='mx-auto flex h-20 max-w-content items-center text-3xl font-bold'
+      >
+        Ethan Huang
+      </h1>
+    </div>
+  </header>
+  <main class='mx-auto box-content flex max-w-4xl flex-col gap-10 px-5 py-14'>
+    {
+      cv.map((section) => (
+        <section class='drop-shadow-card'>
+          <h2 class='bg-beamer-header px-5 py-2.5 text-lg text-white'>
+            {section.title}
+          </h2>
+          <div class='flex flex-col gap-5 bg-beamer-card px-5 py-7'>
+            {section.text && <p>{section.text}</p>}
+            <ul class='flex flex-col gap-5'>
+              {section.items.map((item) => (
+                <li class='flex flex-wrap items-center gap-x-2.5'>
+                  <span class='size-2 shrink-0 bg-beamer-bullet' />
+                  {item.name}
+                  <span class='flex flex-1 justify-between gap-x-2.5 text-text-muted *:last:ml-auto'>
+                    {item.detail && <span>{item.detail}</span>}
+                    {item.date && <span>{item.date}</span>}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      ))
+    }
+  </main>
+  <footer class='sticky bottom-0 bg-beamer-footer px-5 py-2.5 text-white'>
+    <p class='mx-auto max-w-content'>
+      Inspired by Beamer theme that my Calculus teacher used, because it’s fun
+      and why not.
+    </p>
+  </footer>
+</Layout>
