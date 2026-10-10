@@ -1,8 +1,4 @@
-export const cv: {
-  title: string
-  text?: string
-  items: { name: string; detail?: string; date?: string }[]
-}[] = [
+export const cv = [
   {
     title: 'About',
     text: 'I’m a data engineer and data journalist who turns public records into maps, trackers and charts people can read.',

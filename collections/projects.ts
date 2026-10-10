@@ -1,9 +1,4 @@
-export const projects: {
-  title: string
-  description?: string
-  links: { title: string; href: string; meta: string }[]
-  imageFolder: string
-}[] = [
+export const projects = [
   {
     title: 'What’s wrong with the “traffic circles” in Taiwan?',
     description:

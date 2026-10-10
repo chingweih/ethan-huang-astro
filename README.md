@@ -10,11 +10,11 @@ add mdx in [collections/notes](./collections/notes/) to make it a post.
 
 ### Projects
 
-update [projects.ts](./src/data/projects.ts).
+update [projects.ts](./collections/projects.ts).
 
 ### Snapshots
 
-use this command to populate description to the images.
+use this command to populate description to the images inside [snapshots](./collections/snapshots).
 
 ```bash
 exiftool -ImageDescription="something" photo.jpg
@@ -22,4 +22,4 @@ exiftool -ImageDescription="something" photo.jpg
 
 ### CV
 
-update [cv.ts](./src/data/cv.ts).
+update [cv.ts](./collections/cv.ts).

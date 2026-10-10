@@ -1,10 +1,12 @@
 ---
+import { getCollection } from 'astro:content'
 import Name from '../components/Name.svelte'
 import Polaroid from '../components/Polaroid.astro'
-import { snapshots } from '../../collections/snapshots'
 import Page from '../layouts/Page.astro'
 
-const [latest, previous] = snapshots
+const [{ data: latest }, { data: previous }] = (
+  await getCollection('snapshots')
+).sort((a, b) => (b.data.date?.valueOf() ?? 0) - (a.data.date?.valueOf() ?? 0))
 ---
 
 <Page>

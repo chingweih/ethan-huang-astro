@@ -1,7 +1,11 @@
 ---
+import { getCollection } from 'astro:content'
 import Nav from '../components/Nav.astro'
-import { cv } from '../../collections/cv'
 import Layout from '../layouts/Layout.astro'
+
+const cv = (await getCollection('cv')).sort(
+  (a, b) => a.data.order - b.data.order,
+)
 ---
 
 <Layout title="cv, if you're interested" class='bg-beamer-page font-slab'>
@@ -19,7 +23,7 @@ import Layout from '../layouts/Layout.astro'
   </header>
   <main class='mx-auto box-content flex max-w-4xl flex-col gap-10 px-5 py-14'>
     {
-      cv.map((section) => (
+      cv.map(({ data: section }) => (
         <section class='drop-shadow-card'>
           <h2 class='bg-beamer-header px-5 py-2.5 text-lg text-white'>
             {section.title}

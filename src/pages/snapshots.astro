@@ -1,20 +1,24 @@
 ---
 import { getImage, Image } from 'astro:assets'
+import { getCollection } from 'astro:content'
 import Footer from '../components/Footer.astro'
 import Lightbox from '../components/Lightbox.svelte'
 import Nav from '../components/Nav.astro'
-import { snapshots } from '../../collections/snapshots'
 import Layout from '../layouts/Layout.astro'
 
 const COLUMNS = 3
 
+const snapshots = (await getCollection('snapshots')).sort(
+  (a, b) => (b.data.date?.valueOf() ?? 0) - (a.data.date?.valueOf() ?? 0),
+)
+
 const gallery = await Promise.all(
-  snapshots.map(async (snapshot, index) => ({
-    ...snapshot,
+  snapshots.map(async ({ data }, index) => ({
+    ...data,
     index,
     full: await getImage({
-      src: snapshot.image,
-      width: Math.min(snapshot.image.width, 2400),
+      src: data.image,
+      width: Math.min(data.image.width, 2400),
     }),
   })),
 )
