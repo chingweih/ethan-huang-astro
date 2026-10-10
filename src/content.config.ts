@@ -102,7 +102,11 @@ export const collections = {
               id: path.basename(file),
               image: `/${file}`,
               date,
-              caption: [ImageDescription, date?.getFullYear()]
+              caption: [
+                ImageDescription,
+                date &&
+                  `${date.getFullYear()}/${date.getMonth()}/${date.getDate()}`,
+              ]
                 .filter(Boolean)
                 .join(', '),
               settings: [
