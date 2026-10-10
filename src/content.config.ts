@@ -4,8 +4,8 @@ import { z } from 'astro/zod'
 import exifr from 'exifr'
 import fs from 'node:fs/promises'
 import path from 'node:path'
-import { cv } from '../collections/cv'
-import { projects } from '../collections/projects'
+import { cv, cvSchema } from '../collections/cv'
+import { projects, projectSchema } from '../collections/projects'
 
 const IMAGES = '*.{avif,jpeg,jpg,png,webp}'
 
@@ -36,18 +36,7 @@ export const collections = {
   cv: defineCollection({
     loader: () =>
       cv.map((section, order) => ({ id: section.title, order, ...section })),
-    schema: z.object({
-      order: z.number(),
-      title: z.string(),
-      text: z.string().optional(),
-      items: z.array(
-        z.object({
-          name: z.string(),
-          detail: z.string().optional(),
-          date: z.string().optional(),
-        }),
-      ),
-    }),
+    schema: cvSchema.extend({ order: z.number() }),
   }),
 
   projects: defineCollection({
@@ -67,15 +56,9 @@ export const collections = {
         })),
       ),
     schema: ({ image }) =>
-      z.object({
-        order: z.number(),
-        title: z.string(),
-        description: z.string().optional(),
-        links: z.array(
-          z.object({ title: z.string(), href: z.url(), meta: z.string() }),
-        ),
-        images: z.array(image()),
-      }),
+      projectSchema
+        .omit({ imageFolder: true })
+        .extend({ order: z.number(), images: z.array(image()) }),
   }),
 
   snapshots: defineCollection({

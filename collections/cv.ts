@@ -1,4 +1,18 @@
-export const cv = [
+import { z } from 'astro/zod'
+
+export const cvSchema = z.object({
+  title: z.string(),
+  text: z.string().optional(),
+  items: z.array(
+    z.object({
+      name: z.string(),
+      detail: z.string().optional(),
+      date: z.string().optional(),
+    }),
+  ),
+})
+
+export const cv: z.input<typeof cvSchema>[] = [
   {
     title: 'About',
     text: 'I’m a data engineer and data journalist who turns public records into maps, trackers and charts people can read.',

@@ -1,8 +1,21 @@
-export const projects = [
+import { z } from 'astro/zod'
+
+export const projectSchema = z.object({
+  title: z.string(),
+  description: z.string().optional(),
+  award: z.string().optional(),
+  links: z.array(
+    z.object({ title: z.string(), href: z.url(), meta: z.string() }),
+  ),
+  imageFolder: z.string(),
+})
+
+export const projects: z.input<typeof projectSchema>[] = [
   {
     title: 'What’s wrong with the “traffic circles” in Taiwan?',
     description:
       'Using the DBSCAN algorithum to cluster thousands of official accident records, I tried to recreate what goes wrong at each roundabout, so we can build more roundabouts, fewer “traffic circles”.',
+    award: '2026 SOPA Awards | Infographics: Honourable Mention',
     links: [
       {
         title:
@@ -187,7 +200,8 @@ export const projects = [
   },
   {
     title: 'Hackathon project: Carbon Notebook',
-    description: `In a 24-hour hackathon, we built a Town Pass microservice that estimates your carbon footprint from e-invoices and GPS and shows you how to cut it. Second place at the 2025 codefest.taipei hackathon.`,
+    description: `In a 24-hour hackathon, we built a Town Pass microservice that estimates your carbon footprint from e-invoices and GPS and shows you how to cut it.`,
+    award: '2025 codefest.taipei Hackathon | Second Place',
     links: [
       {
         title: 'taipei-doit/townpass2025-carbon-notebook',

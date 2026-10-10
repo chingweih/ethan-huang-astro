@@ -1,6 +1,7 @@
 ---
 import { getImage, Image } from 'astro:assets'
 import { getCollection } from 'astro:content'
+import Laurel from '../assets/laurel.svg'
 import AutoScroll from '../components/AutoScroll.svelte'
 import MoreLinks from '../components/MoreLinks.svelte'
 import ProjectLink from '../components/ProjectLink.astro'
@@ -34,6 +35,13 @@ const projects = await Promise.all(
         <article class='flex flex-col gap-x-11 gap-y-5 py-2.5 md:flex-row md:items-center'>
           <div class='flex flex-col justify-between gap-5 self-stretch py-4 md:w-1/2'>
             <div class='flex flex-col gap-2.5'>
+              {project.award && (
+                <p class='flex items-center gap-0.75 text-xs text-text-muted'>
+                  <Laurel aria-hidden='true' />
+                  {project.award}
+                  <Laurel aria-hidden='true' class='-scale-x-100' />
+                </p>
+              )}
               <h2 class='text-lg'>{project.title}</h2>
               {project.description && (
                 <p class='text-sm'>{project.description}</p>
