@@ -81,12 +81,18 @@ export const collections = {
               Make && Model?.startsWith(Make)
                 ? Model
                 : [Make, Model].filter(Boolean).join(' ')
+
+            const filename = path.parse(file).name
+            const description = filename.startsWith('d__')
+              ? filename.replace('d__', '')
+              : ImageDescription
+
             return {
               id: path.basename(file),
               image: `/${file}`,
               date,
               caption: [
-                ImageDescription,
+                description,
                 date &&
                   `${date.getFullYear()}/${date.getMonth()}/${date.getDate()}`,
               ]
