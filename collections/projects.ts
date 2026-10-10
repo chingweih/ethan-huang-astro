@@ -181,6 +181,12 @@ export const projects: {
         href: 'https://app.icanhelp.tw',
         meta: 'App Store / Google Play',
       },
+      {
+        title:
+          '壯闊台灣聯盟開發災害應變與通報管理系統 開啟智慧救災與資源統合新里程',
+        href: 'https://news.microsoft.com/zh-tw/forward-alliance-develop-dsisaster-response-and-notification-management-system/',
+        meta: '2025/6/18',
+      },
     ],
     imageFolder: 'icanhelp',
   },
@@ -192,6 +198,12 @@ export const projects: {
         title: 'taipei-doit/townpass2025-carbon-notebook',
         href: 'https://github.com/taipei-doit/townpass2025-carbon-notebook',
         meta: 'GitHub',
+      },
+      {
+        title:
+          '2025秋季黑客松經驗分享：2026臺北秋季程式設計節｜城市通微服務大黑客松線上說明會',
+        href: 'https://youtube.com/watch?v=FyATpYc6VsA&t=773',
+        meta: '2026/9/3',
       },
     ],
     imageFolder: 'carbon-notebook',
@@ -205,6 +217,11 @@ export const projects: {
           '《財劃法》數據科普幕後，我們如何處理近四千頁AI看不懂的政府預算書？',
         href: 'https://medium.com/twreporter/財劃法-數據科普幕後-我們如何處理近四千頁ai看不懂的政府預算書-986d99185ef6',
         meta: '2025/3/7',
+      },
+      {
+        title: '誰是新版《財劃法》贏家？數據解析修法關鍵結果與隱憂',
+        href: 'https://www.youtube.com/watch?v=o5h2G6r2NUo',
+        meta: '2025/1/23',
       },
       {
         title:
