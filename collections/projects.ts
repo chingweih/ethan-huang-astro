@@ -190,6 +190,11 @@ export const projects: z.input<typeof projectSchema>[] = [
         meta: 'App Store / Google Play',
       },
       {
+        title: 'ForwardAlliance/opengis',
+        href: 'https://github.com/ForwardAlliance/opengis',
+        meta: 'GitHub',
+      },
+      {
         title:
           '壯闊台灣聯盟開發災害應變與通報管理系統 開啟智慧救災與資源統合新里程',
         href: 'https://news.microsoft.com/zh-tw/forward-alliance-develop-dsisaster-response-and-notification-management-system/',
@@ -283,6 +288,11 @@ export const projects: z.input<typeof projectSchema>[] = [
         title: '【Data Reporter】25張圖表，看「第一波大罷免」各村里投票結果',
         href: 'https://www.twreporter.org/a/data-reporter-2025-726-recall-results',
         meta: '2025/7/27',
+      },
+      {
+        title: 'lab-reporter/projects.twreporter.org',
+        href: 'https://github.com/lab-reporter/projects.twreporter.org/tree/main/packages/twreporter/ddd/2025-0823-vote',
+        meta: 'GitHub',
       },
     ],
     imageFolder: 'politics',
