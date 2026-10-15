@@ -124,6 +124,11 @@ export const projects: z.input<typeof projectSchema>[] = [
         meta: '2026/7/3',
       },
       {
+        title: '你喝的水，能有多少故事？',
+        href: 'https://us14.campaign-archive.com/?u=4da5a7d3b98dbc9fdad009e7e&id=6cfefc85a7',
+        meta: '2026/7/31',
+      },
+      {
         title:
           '【Data Reporter】互動式地圖揭10大風險流域：全台59處取水口上游疑未設保護區、汙染工廠逾300家',
         href: 'https://www.twreporter.org/a/data-reporter-tracking-pollution-sources-of-drinking-water',
