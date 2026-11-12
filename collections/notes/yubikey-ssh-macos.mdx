@@ -1,0 +1,64 @@
+---
+title: Use Yubikey with SSH and macOS
+date: 2026-11-12
+---
+
+I recently got a pair of Yubikeys from OpenAI deals, other than online accounts, I also want to secure my servers even more with hardware keys.
+
+## Installing required packages
+
+## Generate FIDO2 SSH keys
+
+```bash
+ssh-keygen -t ed25519-sk -O resident -O verify-required -C "YubiKey" -f ~/.ssh/yubikey
+```
+
+You can add subfixes like `yubikey_nano` for different pysical keys.
+
+## Using it in your servers
+
+Copy content of `~/.ssh/yubikey.pub` into `~/.ssh/authorized_keys` just like any other SSH keys.
+
+Then, you can add your yubikey private key as `IdentityFile` in your `~/.ssh/config` for the host, when you're logging in the next time, ssh client will ask for your security key PIN and touch for user presence.
+
+```bash
+Host your-server
+  HostName your-server.local
+  IdentityFile ~/.ssh/yubikey_nano
+```
+
+## If you can't use Homebrew's OpenSSH
+
+If you use cmux ssh/mosh-tmux like me that pins Apple's builtin SSH client, instead of using the homebrew version in `PATH`, you can use an additional package [`openssh-sk-provider`](https://github.com/Homebrew/homebrew-core/pull/317734) to install an external provider.
+
+```bash
+brew install openssh-sk-provider
+```
+
+Then, add `SecurityKeyProvider` to your ssh config for hosts that you want to connect using security keys.
+
+```text
+Host your-server
+  HostName your-server.local
+  IdentityFile ~/.ssh/yubikey_nano
+  SecurityKeyProvider /opt/homebrew/opt/openssh-sk-provider/lib/sk-libfido2.dylib
+```
+
+## Share SSH logins between connections
+
+cmux by default initiates multiple ssh connections for single workspace, to avoid constantly typing PIN and touching the key (trust me, it'll ask at least 10 times...), let ssh share logins between connections.
+
+```text
+  ControlMaster auto
+  ControlPath ~/.ssh/cm-%C
+  ControlPersist 10m
+```
+
+Change `10m` to any length that you're confortable with.
+
+Lastly, make sure `~/.ssh/authorized_keys` on your remote servers only has your yubikey public key for maxmium security.
+
+## References
+
+- [How to use Yubikey with SSH and macOS](https://gist.github.com/miohtama/fb62300611a8ea29403277c71ebc772d)
+- [Securing SSH Authentication with FIDO2 Security Keys](https://developers.yubico.com/SSH/Securing_SSH_with_FIDO2.html)
