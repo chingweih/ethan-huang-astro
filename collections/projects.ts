@@ -88,6 +88,11 @@ export const projects: z.input<typeof projectSchema>[] = [
       'Paying closer attention to our day-to-day life, from a newly built “engineering feat” bridge to your local elementary schools.',
     links: [
       {
+        title: '【POV遊戲】通學路上：體驗孩童上學考驗',
+        href: 'https://www.twreporter.org/a/school-zone-safety-pov-game',
+        meta: '2026/11/12',
+      },
+      {
         title:
           '【Data Reporter】你的孩子上學安全嗎？《報導者》全台國中小通學環境大體檢（上）',
         href: 'https://www.twreporter.org/a/data-reporter-school-zone-safety-1',
