@@ -3,7 +3,15 @@ import { z } from 'astro/zod'
 export const projectSchema = z.object({
   title: z.string(),
   description: z.string().optional(),
-  award: z.string().optional(),
+  awards: z
+    .array(
+      z.object({
+        title: z.string(),
+        description: z.string(),
+        href: z.url().optional(),
+      }),
+    )
+    .optional(),
   links: z.array(
     z.object({ title: z.string(), href: z.url(), meta: z.string() }),
   ),
@@ -15,13 +23,29 @@ export const projects: z.input<typeof projectSchema>[] = [
     title: 'What’s wrong with the “traffic circles” in Taiwan?',
     description:
       'Using the DBSCAN algorithum to cluster thousands of official accident records, I tried to recreate what goes wrong at each roundabout, so we can build more roundabouts, fewer “traffic circles”.',
-    award: '2026 SOPA Awards | Infographics: Honourable Mention',
+    awards: [
+      {
+        title: '2026 SOPA Awards',
+        description: 'Infographics: Honourable Mention',
+        href: 'https://sopawards.com/wp-content/uploads/2026/06/SOPA-2026-Awards-Winner-List_Final_12062026.pdf',
+      },
+      {
+        title: '2026 Sigma Awards',
+        description: 'Finalist',
+        href: 'https://www.sigmaawards.org/remarkable-diversity-confronting-some-of-the-most-urgent-issues-of-our-time-announcing-the-2026-sigma-awards-shortlist/',
+      },
+    ],
     links: [
       {
         title:
           '〈全台圓環體檢〉數據幕後：兩塊鳳梨酥＋機器學習演算法，如何幫我們從219萬筆交通資料庫拆解圓環設計問題？',
         href: 'https://medium.com/twreporter/全台圓環體檢-數據幕後-兩塊鳳梨酥-機器學習演算法-如何幫我們從219萬筆交通資料庫拆解圓環設計問題-ff6d726e1843',
         meta: '2026/2/24',
+      },
+      {
+        title: '2026 Distinguished International Forum on Journalism',
+        href: 'https://www.nccu.edu.tw/p/406-1000-24559,r195.php?Lang=zh-tw#gsc.tab=0',
+        meta: '2026/11/19',
       },
       {
         title:
@@ -42,7 +66,20 @@ export const projects: z.input<typeof projectSchema>[] = [
     title: `Tracking PLA drills and Taiwan’s preparedness`,
     description:
       'We’ve collected millions of AIS records and years of PLA activities around Taiwan, helping us rebuild the Hong Tai’s track before it cut Taiwan’s undersea cable and understand what’s happening around us during those mysterious drills.',
+    awards: [
+      {
+        title: '2026 SOPA Awards',
+        description: 'Journalistic Innovation: Honourable Mention',
+        href: 'https://sopawards.com/wp-content/uploads/2026/06/SOPA-2026-Awards-Winner-List_Final_12062026.pdf',
+      },
+    ],
     links: [
+      {
+        title:
+          'PLA Incurions Tracker by The Reporter, Taiwan｜報導者共軍動態資料庫',
+        href: 'https://pla-tracker.twreporter.org',
+        meta: 'Website / API',
+      },
       {
         title:
           '3年半第7次圍台軍演：歷來最嚴重海空交通干擾，反映中國哪些武嚇目的？',
@@ -72,6 +109,13 @@ export const projects: z.input<typeof projectSchema>[] = [
   {
     title: `What makes a cheering song sound “Taiwan”?`,
     description: `An experiment in using embedding models to understand music. We’ve created interactive components that play audio and visualize how changes in the music’s groove affect the listening experience.`,
+    awards: [
+      {
+        title: '2026 Excellent Journalism Award',
+        description: 'Arts & Culture: Finalist',
+        href: 'https://feja.org.tw/83444/',
+      },
+    ],
     links: [
       {
         title:
@@ -216,7 +260,13 @@ export const projects: z.input<typeof projectSchema>[] = [
   {
     title: 'Hackathon project: Carbon Notebook',
     description: `In a 24-hour hackathon, we built a Town Pass microservice that estimates your carbon footprint from e-invoices and GPS and shows you how to cut it.`,
-    award: '2025 codefest.taipei Hackathon | Second Place',
+    awards: [
+      {
+        title: '2025 codefest.taipei Hackathon',
+        description: 'Second Place',
+        href: 'https://codefest.taipei/2025-fall/past',
+      },
+    ],
     links: [
       {
         title: 'taipei-doit/townpass2025-carbon-notebook',

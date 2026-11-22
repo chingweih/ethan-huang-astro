@@ -35,13 +35,27 @@ const projects = await Promise.all(
         <article class='flex flex-col gap-x-11 gap-y-5 py-2.5 md:flex-row md:items-center'>
           <div class='flex flex-col justify-between gap-5 self-stretch py-4 md:w-1/2'>
             <div class='flex flex-col gap-2.5'>
-              {project.award && (
-                <p class='flex items-center gap-0.75 text-xs text-text-muted'>
-                  <Laurel aria-hidden='true' />
-                  {project.award}
-                  <Laurel aria-hidden='true' class='-scale-x-100' />
-                </p>
-              )}
+              {project.awards?.map(({ title, description, href }) => {
+                const Wrapper = href ? 'a' : 'div'
+
+                return (
+                  <Wrapper
+                    class='flex w-fit items-center gap-2 px-px text-3xs text-text-muted'
+                    href={href}
+                    target={href ? '_blank' : undefined}
+                  >
+                    <Laurel aria-hidden='true' class='h-5 w-auto shrink-0' />
+                    <span class='flex flex-col'>
+                      <span class='text-2xs font-medium'>{title}</span>
+                      <span>{description}</span>
+                    </span>
+                    <Laurel
+                      aria-hidden='true'
+                      class='h-5 w-auto shrink-0 -scale-x-100'
+                    />
+                  </Wrapper>
+                )
+              })}
               <h2 class='text-lg'>{project.title}</h2>
               {project.description && (
                 <p class='text-sm'>{project.description}</p>
